@@ -14,6 +14,7 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 keymap("n", "<C-tab>", "<c-6>", opts)
 
+
     -- ["<C-h>"] = "<C-w>h",
     -- ["<C-j>"] = "<C-w>j",
     -- ["<C-k>"] = "<C-w>k",
@@ -39,9 +40,14 @@ vim.cmd [[:amenu 10.110 mousemenu.References <cmd>lua vim.lsp.buf.references()<C
 vim.keymap.set("n", "<RightMouse>", "<cmd>:popup mousemenu<CR>")
 vim.keymap.set("n", "<Tab>", "<cmd>:popup mousemenu<CR>")
 
+-- normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
+-- normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
+vim.keymap.set("n", "<s-l>", "<cmd>:BufferLineCycleNext<CR>")
+vim.keymap.set("n", "<s-h>", "<cmd>:BufferLineCyclePrev<CR>")
+
 -- more good
-keymap({ "n", "o", "x" }, "<s-h>", "^", opts)
-keymap({ "n", "o", "x" }, "<s-l>", "g_", opts)
+-- keymap({ "n", "o", "x" }, "<s-h>", "^", opts)
+-- keymap({ "n", "o", "x" }, "<s-l>", "g_", opts)
 
 -- tailwind bearable to work with
 keymap({ "n", "x" }, "j", "gj", opts)
