@@ -5,6 +5,41 @@ local M = {
   },
 }
 
+-- LSP clients attached to buffer
+local clients_lsp = function()
+  local opt = {}
+  opt.bufnr = vim.api.nvim_get_current_buf()
+
+  -- local clients = vim.lsp.buf_get_clients(bufnr)
+  local clients = vim.lsp.get_active_clients(opt)
+  if next(clients) == nil then
+    return ""
+  end
+
+  local c = {}
+  for _, client in pairs(clients) do
+    -- return client.name
+    if client.name ~= "null-ls" then
+      table.insert(c, client.name)
+    end
+  end
+
+  return "\u{f085} " .. table.concat(c, "|")
+end
+
+-- local config = {
+--   (...)
+--   sections = {
+--     lualine_a = { 'mode' },
+--     lualine_b = { branch, filename },
+--     lualine_c = { clients_lsp, diagnostics, },
+--     (...)
+--   },
+-- }
+--
+--
+-- lualine.setup(config)
+
 function M.config()
   local icons = require "user.icons"
   local diff = {
@@ -95,7 +130,7 @@ function M.config()
       lualine_a = { "mode" },
       lualine_b = { "branch", "diff", "diagnostics" },
       lualine_c = {},
-      lualine_x = { treesitter, filetype },
+      lualine_x = { treesitter, filetype, clients_lsp },
       lualine_y = {},
       -- lualine_z = {},
     },
