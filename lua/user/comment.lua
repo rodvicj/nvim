@@ -22,6 +22,10 @@ function M.config()
   vim.g.skip_ts_context_commentstring_module = true
   ---@diagnostic disable: missing-fields
   require("ts_context_commentstring").setup {
+    config = {
+      htmldjango = "{#%s#}",
+      -- html = "<!--%s-->",
+    },
     enable_autocmd = false,
   }
 
