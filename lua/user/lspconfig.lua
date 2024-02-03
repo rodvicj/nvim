@@ -134,6 +134,21 @@ function M.config()
       opts.filetypes = { "htmldjango", "astro" }
     end
 
+    if server == "pyright" then
+      opts.settings = {
+        python = {
+          analysis = {
+            typeCheckingMode = "off",
+            diagnosticMode = "workspace",
+            inlayHints = {
+              variableTypes = true,
+              functionReturnTypes = true,
+            },
+          },
+        },
+      }
+    end
+
     lspconfig[server].setup(opts)
   end
 end

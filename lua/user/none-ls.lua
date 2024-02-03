@@ -28,7 +28,9 @@ function M.config()
       --   -- extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
       -- },
       -- formatting.eslint,
-      null_ls.builtins.diagnostics.flake8,
+      null_ls.builtins.diagnostics.flake8.with {
+        extra_args = { "--ignore=E501,E203,F821,F401,W504" },
+      },
       -- diagnostics.flake8,
       null_ls.builtins.completion.spell,
     },
