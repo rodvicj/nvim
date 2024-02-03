@@ -5,11 +5,37 @@ local M = {
   },
 }
 
+M.colors = {
+  bg = "#202328",
+  fg = "#bbc2cf",
+  yellow = "#ECBE7B",
+  cyan = "#008080",
+  darkblue = "#081633",
+  green = "#98be65",
+  orange = "#FF8800",
+  violet = "#a9a1e1",
+  magenta = "#c678dd",
+  purple = "#c678dd",
+  blue = "#51afef",
+  red = "#ec5f67",
+}
+
+function M.env_cleanup(venv)
+  if string.find(venv, "/") then
+    local final_venv = venv
+    for w in venv:gmatch "([^/]+)" do
+      final_venv = w
+    end
+    venv = final_venv
+  end
+  return venv
+end
+
 -- https://gist.github.com/Lamarcke/36e086dd3bb2cebc593d505e2f838e07
 -- Returns a string with a list of attached LSP clients, including
 -- formatters and linters from null-ls, nvim-lint and formatter.nvim
 
-local function get_attached_clients()
+function M.get_attached_clients()
   local buf_clients = vim.lsp.get_active_clients { bufnr = 0 }
   if #buf_clients == 0 then
     return "LSP Inactive"
@@ -92,51 +118,19 @@ local function get_attached_clients()
   return language_servers
 end
 
+function M.diff_source()
+  local gitsigns = vim.b.gitsigns_status_dict
+  if gitsigns then
+    return {
+      added = gitsigns.added,
+      modified = gitsigns.changed,
+      removed = gitsigns.removed,
+    }
+  end
+end
+
 function M.config()
   local icons = require "user.icons"
-  local diff = {
-    "diff",
-    colored = false,
-    symbols = { added = icons.git.LineAdded, modified = icons.git.LineModified, removed = icons.git.LineRemoved }, -- Changes the symbols used by the diff.
-  }
-
-  local filetype = {
-    function()
-      local filetype = vim.bo.filetype
-      local upper_case_filetypes = {
-        "json",
-        "jsonc",
-        "yaml",
-        "toml",
-        "css",
-        "scss",
-        "html",
-        "xml",
-      }
-
-      if vim.tbl_contains(upper_case_filetypes, filetype) then
-        return filetype:upper()
-      end
-
-      return filetype
-    end,
-  }
-
-  local colors = {
-    bg = "#202328",
-    fg = "#bbc2cf",
-    yellow = "#ECBE7B",
-    cyan = "#008080",
-    darkblue = "#081633",
-    green = "#98be65",
-    orange = "#FF8800",
-    violet = "#a9a1e1",
-    magenta = "#c678dd",
-    purple = "#c678dd",
-    blue = "#51afef",
-    red = "#ec5f67",
-  }
-
   local window_width_limit = 100
 
   local conditions = {
@@ -146,11 +140,15 @@ function M.config()
     hide_in_width = function()
       return vim.o.columns > window_width_limit
     end,
-    -- check_git_workspace = function()
-    --   local filepath = vim.fn.expand "%:p:h"
-    --   local gitdir = vim.fn.finddir(".git", filepath .. ";")
-    --   return gitdir and #gitdir > 0 and #gitdir < #filepath
-    -- end,
+  }
+
+  local mode = {
+    function()
+      return " " .. icons.ui.Target .. " "
+    end,
+    padding = { left = 0, right = 0 },
+    color = {},
+    cond = nil,
   }
 
   local treesitter = {
@@ -160,27 +158,48 @@ function M.config()
     color = function()
       local buf = vim.api.nvim_get_current_buf()
       local ts = vim.treesitter.highlighter.active[buf]
-      return { fg = ts and not vim.tbl_isempty(ts) and colors.green or colors.red }
+      return { fg = ts and not vim.tbl_isempty(ts) and M.colors.green or M.colors.red }
     end,
     cond = conditions.hide_in_width,
   }
 
+  local python_env = {
+    function()
+      if vim.bo.filetype == "python" then
+        local venv = os.getenv "CONDA_DEFAULT_ENV" or os.getenv "VIRTUAL_ENV"
+        if venv then
+          local icon = require "nvim-web-devicons"
+          local py_icon, _ = icon.get_icon ".py"
+          return string.format(" " .. py_icon .. " (%s)", M.env_cleanup(venv))
+        end
+      end
+      return ""
+    end,
+    color = { fg = M.colors.green },
+    cond = conditions.hide_in_width,
+  }
+
   local attached_clients = {
-    get_attached_clients,
+    M.get_attached_clients,
     color = {
       gui = "bold",
     },
   }
 
-  -- lualine_x = {
-  --   components.treesitter,
-  --   components.encoding,
-  --   components.spaces,
-  --   components.lsp,
-  --   components.filetype,
-  -- },
-  -- lualine_z = { components.scrollbar },
-  -- lualine_y = { components.location },
+  local spaces = {
+    function()
+      local shiftwidth = vim.api.nvim_buf_get_option(0, "shiftwidth")
+      return icons.ui.Tab .. "" .. shiftwidth
+    end,
+    padding = 1,
+  }
+
+  local encoding = {
+    "o:encoding",
+    fmt = string.upper,
+    color = {},
+    cond = conditions.hide_in_width,
+  }
 
   require("lualine").setup {
     options = {
@@ -189,15 +208,16 @@ function M.config()
       ignore_focus = { "NvimTree" },
     },
     sections = {
-      lualine_a = { "mode" },
+      lualine_a = { mode },
       lualine_b = { "branch", "diff", "diagnostics" },
-      lualine_c = {},
-      lualine_x = { treesitter, filetype },
-      lualine_y = { attached_clients },
-      -- lualine_z = {},
+      lualine_c = { python_env },
+      lualine_x = { treesitter, encoding, spaces, attached_clients, "filetype" },
+      -- lualine_y = {},
+      lualine_y = { "location" },
+      lualine_z = {},
     },
-    -- extensions = { "quickfix", "man", "fugitive", "oil" },
     -- extensions = { "quickfix", "man", "fugitive" },
   }
 end
+
 return M

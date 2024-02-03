@@ -29,7 +29,6 @@ spec "user.project"
 spec "user.indentline"
 spec "user.toggleterm"
 spec "user.bufferline"
--- spec "user.ts-commentstring"
 
 -- Extras
 spec "user.extras.colorizer"
