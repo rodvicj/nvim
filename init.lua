@@ -33,5 +33,6 @@ spec "user.bufferline"
 -- Extras
 spec "user.extras.colorizer"
 spec "user.extras.fidget"
+spec "user.extras.rainbow-delimiters"
 
 require "user.lazy"

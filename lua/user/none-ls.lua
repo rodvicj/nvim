@@ -20,6 +20,7 @@ function M.config()
 
       -- for htmldjango
       formatting.djlint.with {
+        -- extra_filetypes = { "html", "htmldjango" },
         extra_args = { "--indent=2" },
       },
       -- formatting.prettier.with {

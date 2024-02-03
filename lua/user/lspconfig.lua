@@ -131,7 +131,7 @@ function M.config()
 
     -- limit/extend filetypes supported for emmet_ls
     if server == "emmet_ls" then
-      opts.filetypes = { "astro", "htmldjango" }
+      opts.filetypes = { "htmldjango", "astro" }
     end
 
     lspconfig[server].setup(opts)
