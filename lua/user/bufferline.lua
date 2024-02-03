@@ -1,62 +1,59 @@
 local M = {}
 
-M.highlights = {
-  background = {
-    italic = true,
-    bold = false,
-  },
-  buffer_selected = {
-    italic = false,
-    bold = false,
-  },
-  numbers = {
-    italic = false,
-    bold = false,
-  },
-  numbers_selected = {
-    italic = false,
-    bold = false,
-  },
-}
-
-M.options = {
-  mode = "buffers",
-  always_show_bufferline = true,
-  animation = false,
-  auto_hide = false,
-  icons = "both",
-  icon_custom_colors = true,
-  icon_separator_active = "▎",
-  icon_separator_inactive = "▎",
-  close_command = function(bufnr) -- can be a string | function, see "Mouse actions"
-    M.buf_kill("bd", bufnr, false)
-  end,
-  icon_close_tab = "",
-  icon_close_tab_modified = "●",
-  offsets = { { filetype = "NvimTree", text = "File Explorer", padding = 1 } },
-  show_buffer_icons = true,
-  show_buffer_close_icons = true,
-  show_close_icon = false,
-  show_tab_indicators = false,
-  separator_style = "slant",
-  -- enforce_regular_tabs = true,
-  numbers = function(opts)
-    return string.format("%s", opts.ordinal)
-    -- return string.format("%s", opts.raise(opts.ordinal))
-  end,
-}
-
 M = {
   "akinsho/bufferline.nvim",
-  opts = {
-    options = M.options,
-    highlights = M.highlights,
-  },
+  opts = M.config,
   version = "*",
   dependencies = "nvim-tree/nvim-web-devicons",
   event = "VeryLazy",
 }
 
+M.config = {
+  highlights = {
+    background = {
+      italic = true,
+      bold = false,
+    },
+    buffer_selected = {
+      italic = false,
+      bold = false,
+    },
+    numbers = {
+      italic = false,
+      bold = false,
+    },
+    numbers_selected = {
+      italic = false,
+      bold = false,
+    },
+  },
+  options = {
+    mode = "buffers",
+    always_show_bufferline = true,
+    animation = false,
+    auto_hide = false,
+    icons = "both",
+    icon_custom_colors = true,
+    icon_separator_active = "▎",
+    icon_separator_inactive = "▎",
+    close_command = function(bufnr) -- can be a string | function, see "Mouse actions"
+      M.buf_kill("bd", bufnr, false)
+    end,
+    icon_close_tab = "",
+    icon_close_tab_modified = "●",
+    offsets = { { filetype = "NvimTree", text = "File Explorer", padding = 1 } },
+    show_buffer_icons = true,
+    show_buffer_close_icons = true,
+    show_close_icon = false,
+    show_tab_indicators = false,
+    separator_style = "slant",
+    -- enforce_regular_tabs = true,
+    numbers = function(opts)
+      return string.format("%s", opts.ordinal)
+      -- return string.format("%s", opts.raise(opts.ordinal))
+    end,
+  },
+}
 
 --stylua: ignore
 
@@ -136,7 +133,5 @@ function M.buf_kill(kill_command, bufnr, force)
     vim.cmd(string.format("%s %d", kill_command, bufnr))
   end
 end
-
-vim.opt.termguicolors = true
 
 return M

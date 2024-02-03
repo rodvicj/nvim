@@ -14,12 +14,6 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 keymap("n", "<C-tab>", "<c-6>", opts)
 
-
-    -- ["<C-h>"] = "<C-w>h",
-    -- ["<C-j>"] = "<C-w>j",
-    -- ["<C-k>"] = "<C-w>k",
-    -- ["<C-l>"] = "<C-w>l",
-
 keymap("n", "n", "nzz", opts)
 keymap("n", "N", "Nzz", opts)
 keymap("n", "*", "*zz", opts)
@@ -40,10 +34,12 @@ vim.cmd [[:amenu 10.110 mousemenu.References <cmd>lua vim.lsp.buf.references()<C
 vim.keymap.set("n", "<RightMouse>", "<cmd>:popup mousemenu<CR>")
 vim.keymap.set("n", "<Tab>", "<cmd>:popup mousemenu<CR>")
 
--- normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
--- normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
+-- bufferlinecycle
 vim.keymap.set("n", "<s-l>", "<cmd>:BufferLineCycleNext<CR>")
 vim.keymap.set("n", "<s-h>", "<cmd>:BufferLineCyclePrev<CR>")
+
+-- select all
+vim.keymap.set("n", "<C-a>", "gg<S-v>G")
 
 -- more good
 -- keymap({ "n", "o", "x" }, "<s-h>", "^", opts)
@@ -54,30 +50,4 @@ keymap({ "n", "x" }, "j", "gj", opts)
 keymap({ "n", "x" }, "k", "gk", opts)
 keymap("n", "<leader>w", ":lua vim.wo.wrap = not vim.wo.wrap<CR>", opts)
 
-
-vim.api.nvim_set_keymap('t', '<C-;>', '<C-\\><C-n>', opts)
-
-
-
-  -- normal_mode = {
-  --   -- Better window movement
-  --   ["<C-h>"] = "<C-w>h",
-  --   ["<C-j>"] = "<C-w>j",
-  --   ["<C-k>"] = "<C-w>k",
-  --   ["<C-l>"] = "<C-w>l",
-
-  --   -- Resize with arrows
-  --   ["<C-Up>"] = ":resize -2<CR>",
-  --   ["<C-Down>"] = ":resize +2<CR>",
-  --   ["<C-Left>"] = ":vertical resize -2<CR>",
-  --   ["<C-Right>"] = ":vertical resize +2<CR>",
-
-  --   -- Move current line / block with Alt-j/k a la vscode.
-  --   ["<A-j>"] = ":m .+1<CR>==",
-  --   ["<A-k>"] = ":m .-2<CR>==",
-
-  --   -- QuickFix
-  --   ["]q"] = ":cnext<CR>",
-  --   ["[q"] = ":cprev<CR>",
-  --   ["<C-q>"] = ":call QuickFixToggle()<CR>",
-  -- },
+vim.api.nvim_set_keymap("t", "<C-;>", "<C-\\><C-n>", opts)

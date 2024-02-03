@@ -40,7 +40,26 @@ function M.config()
     hijack_unnamed_buffer_when_opening = false,
     sync_root_with_cwd = true,
     view = {
+      adaptive_size = false,
+      centralize_selection = true,
+      width = 30,
+      side = "left",
+      preserve_window_proportions = false,
+      number = false,
       relativenumber = false,
+      signcolumn = "yes",
+      float = {
+        enable = false,
+        quit_on_focus_loss = true,
+        open_win_config = {
+          relative = "editor",
+          border = "rounded",
+          width = 30,
+          height = 30,
+          row = 1,
+          col = 1,
+        },
+      },
     },
     renderer = {
       add_trailing = false,
@@ -98,7 +117,13 @@ function M.config()
       update_root = true,
       ignore_list = {},
     },
-
+    filters = {
+      dotfiles = true,
+      git_clean = false,
+      no_buffer = false,
+      custom = { "node_modules", "\\.cache" },
+      exclude = {},
+    },
     diagnostics = {
       enable = true,
       show_on_dirs = false,

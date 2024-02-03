@@ -100,13 +100,6 @@ function M.config()
     symbols = { added = icons.git.LineAdded, modified = icons.git.LineModified, removed = icons.git.LineRemoved }, -- Changes the symbols used by the diff.
   }
 
-  -- local diagnostics = {
-  --   "diagnostics",
-  --   sections = { "error", "warn" },
-  --   colored = false, -- Displays diagnostics status in color if set to true.
-  --   always_visible = true, -- Show diagnostics even if there are none.
-  -- }
-
   local filetype = {
     function()
       local filetype = vim.bo.filetype
@@ -162,7 +155,7 @@ function M.config()
 
   local treesitter = {
     function()
-      return ""
+      return icons.ui.Tree
     end,
     color = function()
       local buf = vim.api.nvim_get_current_buf()
@@ -178,6 +171,16 @@ function M.config()
       gui = "bold",
     },
   }
+
+  -- lualine_x = {
+  --   components.treesitter,
+  --   components.encoding,
+  --   components.spaces,
+  --   components.lsp,
+  --   components.filetype,
+  -- },
+  -- lualine_z = { components.scrollbar },
+  -- lualine_y = { components.location },
 
   require("lualine").setup {
     options = {
@@ -197,41 +200,4 @@ function M.config()
     -- extensions = { "quickfix", "man", "fugitive" },
   }
 end
--- lualine_x = {
---   components.treesitter,
---   components.encoding,
---   components.spaces,
---   components.lsp,
---   components.filetype,
--- },
--- lualine_z = { components.scrollbar },
--- lualine_y = { components.location },
 return M
-
--- return {
---     "nvim-lualine/lualine.nvim",
---     event = { "VimEnter", "BufReadPost", "BufNewFile" },
---     config = function()
---         local attached_clients = {
---             get_attached_clients,
---             color = {
---                 gui = "bold"
---             }
---         }
---         -- Example lualine setup
---         require("lualine").setup({
---             options = {
---                 theme = "auto",
---                 globalstatus = true,
---                 component_separators = { left = "|", right = "|" },
---             },
---
---
---             sections = {
---                 lualine_b = { "branch", "diff" },
---                 lualine_x = { "diagnostics", attached_clients, "filetype" },
---
---             }
---         })
---     end,
--- }

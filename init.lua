@@ -2,6 +2,7 @@ require "user.launch"
 require "user.options"
 require "user.keymaps"
 require "user.autocmds"
+require "user.commands"
 spec "user.colorscheme"
 spec "user.devicons"
 spec "user.treesitter"
@@ -28,4 +29,10 @@ spec "user.project"
 spec "user.indentline"
 spec "user.toggleterm"
 spec "user.bufferline"
+-- spec "user.ts-commentstring"
+
+-- Extras
+spec "user.extras.colorizer"
+spec "user.extras.fidget"
+
 require "user.lazy"

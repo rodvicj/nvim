@@ -127,6 +127,11 @@ function M.config()
       require("neodev").setup {}
     end
 
+    -- -- add htmldjango to html_ls supported filetypes
+    -- if server == "html" then
+    --   opts.filetypes = { "html", "htmldjango" }
+    -- end
+
     lspconfig[server].setup(opts)
   end
 end
