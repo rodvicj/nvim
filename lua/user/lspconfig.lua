@@ -76,6 +76,7 @@ function M.config()
     "bashls",
     "jsonls",
     "yamlls",
+    "emmet_ls",
   }
 
   local default_diagnostic_config = {
@@ -127,10 +128,10 @@ function M.config()
       require("neodev").setup {}
     end
 
-    -- -- add htmldjango to html_ls supported filetypes
-    -- if server == "html" then
-    --   opts.filetypes = { "html", "htmldjango" }
-    -- end
+    -- limit/extend filetypes supported for emmet_ls
+    if server == "emmet_ls" then
+      opts.filetypes = { "astro", "htmldjango" }
+    end
 
     lspconfig[server].setup(opts)
   end
