@@ -35,5 +35,6 @@ spec "user.extras.colorizer"
 spec "user.extras.fidget"
 spec "user.extras.rainbow-delimiters"
 spec "user.extras.neoscroll"
+spec "user.extras.todo-comments"
 
 require "user.lazy"
