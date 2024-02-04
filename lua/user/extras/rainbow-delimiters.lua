@@ -33,14 +33,13 @@ function M.config()
       javascript = "rainbow-delimiters-react",
       html = "rainbow-parens",
       -- htmldjango = "rainbow-delimiters",
-      -- TODO: create highlighting for htmldjango if using it heavily;
+      -- NOTE: create highlighting for htmldjango if using it heavily but first you have to work with treesitter's htmldjango first;
     },
     highlight = {
       "rainbowcol1",
       "rainbowcol2",
       "rainbowcol3",
     },
-
     -- blacklist = { "html" },
   }
 end
