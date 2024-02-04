@@ -34,5 +34,6 @@ spec "user.bufferline"
 spec "user.extras.colorizer"
 spec "user.extras.fidget"
 spec "user.extras.rainbow-delimiters"
+spec "user.extras.neoscroll"
 
 require "user.lazy"

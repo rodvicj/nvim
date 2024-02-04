@@ -1,4 +1,9 @@
-local function my_on_attach(bufnr)
+local M = {
+  "nvim-tree/nvim-tree.lua",
+  -- event = "VeryLazy",
+}
+
+function M.my_on_attach(bufnr)
   local api = require "nvim-tree.api"
 
   local function opts(desc)
@@ -19,10 +24,6 @@ local function my_on_attach(bufnr)
   -- ["<S-k>"] = { api.node.open.preview, opts "Open Preview" },
 end
 
-local M = {
-  "nvim-tree/nvim-tree.lua",
-  -- event = "VeryLazy",
-}
 
 function M.config()
   local wk = require "which-key"
@@ -33,7 +34,7 @@ function M.config()
   local icons = require "user.icons"
 
   require("nvim-tree").setup {
-    on_attach = my_on_attach,
+    on_attach = M.my_on_attach,
     disable_netrw = false,
     hijack_cursor = false,
     hijack_netrw = true,
