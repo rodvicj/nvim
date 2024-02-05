@@ -18,6 +18,18 @@ function M.config()
     ["c"] = { "<cmd>BufferKill<CR>", "Close Buffer" },
     ["w"] = { "<cmd>w!<CR>", "Save" },
 
+    --
+    -- ["gd"] = { vim.lsp.buf.definition, "Goto Definition" },
+    -- ["gD"] = { vim.lsp.buf.declaration, "Goto Declaration" },
+    -- ["gr"] = { vim.lsp.buf.references, "Goto references" },
+
+    -- ["K"] = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Show hover" },
+    -- ["gd"] = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Goto definition" },
+    -- ["gD"] = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Goto Declaration" },
+    -- ["gr"] = { "<cmd>lua vim.lsp.buf.references()<cr>", "Goto references" },
+    -- ["gI"] = { "<cmd>lua vim.lsp.buf.implementation()<cr>", "Goto Implementation" },
+    -- ["gs"] = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "show signature help" },
+
     q = { "<cmd>confirm q<CR>", "Quit" },
     h = { "<cmd>nohlsearch<CR>", "NOHL" },
     -- [";"] = { "<cmd>tabnew | terminal<CR>", "Term" },
@@ -44,7 +56,7 @@ function M.config()
   local which_key = require "which-key"
   which_key.setup {
     plugins = {
-      marks = true,
+      marks = false,
       registers = true,
       spelling = {
         enabled = true,
