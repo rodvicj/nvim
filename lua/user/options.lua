@@ -52,3 +52,14 @@ vim.cmd [[set iskeyword+=-]]
 vim.g.netrw_banner = 0
 vim.g.netrw_mouse = 2
 
+-- for yanking text in wsl
+if vim.fn.has "wsl" == 1 then
+  vim.api.nvim_create_autocmd("TextYankPost", {
+
+    group = vim.api.nvim_create_augroup("Yank", { clear = true }),
+
+    callback = function()
+      vim.fn.system("clip.exe", vim.fn.getreg '"')
+    end,
+  })
+end

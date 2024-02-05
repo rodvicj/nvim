@@ -1,3 +1,4 @@
+-- stops commenting the next line when you press "o" after a commented line
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
   callback = function()
     vim.cmd "set formatoptions-=cro"
