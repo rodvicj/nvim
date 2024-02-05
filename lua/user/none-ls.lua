@@ -21,7 +21,8 @@ function M.config()
       -- for htmldjango
       formatting.djlint.with {
         -- extra_filetypes = { "html", "htmldjango" },
-        extra_args = { "--indent=2" },
+        extra_args = { "--indent=2", "--max-blank-lines=1", "--blank-line-after-tag=extends" },
+        -- extra_args = { "--indent=2", "--max-blank-lines=1", "--blank-line-after-tag=load, extends, include, endblock" },
       },
       -- formatting.prettier.with {
       --   extra_filetypes = { "toml" },
