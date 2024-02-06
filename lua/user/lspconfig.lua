@@ -8,8 +8,6 @@ local M = {
   },
 }
 
-
-
 local function lsp_keymaps(bufnr)
   local opts = { noremap = true, silent = true }
   local keymap = vim.api.nvim_buf_set_keymap
@@ -25,6 +23,7 @@ M.on_attach = function(client, bufnr)
   lsp_keymaps(bufnr)
 
   if client.supports_method "textDocument/inlayHint" then
+    -- NOTE: seems theres an error when this function is called, thus inlay_hints keymapping also throws error when activated
     vim.lsp.inlay_hint.enable(bufnr, true)
   end
 end
