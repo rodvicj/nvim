@@ -54,6 +54,24 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
   end,
 })
 
+-- -- Determine OS
+-- local os_config = "linux"
+-- if vim.fn.has "mac" == 1 then
+--   os_config = "mac"
+-- end
+
+-- for yanking text in wsl
+if vim.fn.has "wsl" == 1 then
+  vim.api.nvim_create_autocmd("TextYankPost", {
+
+    group = vim.api.nvim_create_augroup("Yank", { clear = true }),
+
+    callback = function()
+      vim.fn.system("clip.exe", vim.fn.getreg '"')
+    end,
+  })
+end
+
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "gitcommit", "markdown", "NeogitCommitMessage" },
   callback = function()
