@@ -214,7 +214,7 @@ function M.config()
       lualine_x = { treesitter, encoding, spaces, attached_clients, "filetype" },
       -- lualine_y = {},
       lualine_y = { "location" },
-      lualine_z = {},
+      lualine_z = {"progress"},
     },
     -- extensions = { "quickfix", "man", "fugitive" },
   }
