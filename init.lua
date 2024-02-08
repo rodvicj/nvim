@@ -39,3 +39,5 @@ spec "user.extras.todo-comments"
 spec "user.extras.scrollbar"
 
 require "user.lazy"
+
+-- ffmpeg -hwaccel nvdec -y -i 2023-12-02\ 18-19-44.mp4 -c:v nvenc -qp 18 -preset hq -profile:v high -c:a copy out.mkv
