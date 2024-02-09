@@ -160,3 +160,42 @@ end
 -- }
 
 return M
+
+-- local M = {
+--   "nvim-tree/nvim-tree.lua",
+--   -- event = "VeryLazy",
+-- }
+--
+-- function M.my_on_attach(bufnr)
+--   local api = require "nvim-tree.api"
+--
+--   local function opts(desc)
+--     return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+--   end
+--
+--   -- default mappings
+--   api.config.mappings.default_on_attach(bufnr)
+--
+--   -- custom mappings
+--   vim.keymap.set("n", "<C-t>", api.tree.change_root_to_parent, opts "Up")
+--   vim.keymap.set("n", "?", api.tree.toggle_help, opts "Help")
+--   vim.keymap.set("n", "l", api.node.open.edit, opts "Help")
+--   vim.keymap.set("n", "h", api.node.navigate.parent_close, opts "Help")
+--   -- ["<CR>"] = { api.node.open.edit, opts "Open" },
+--   -- ["v"] = { api.node.open.vertical, opts "Open: Vertical Split" },
+--   -- ["C"] = { api.tree.change_root_to_node, opts "CD" },
+--   -- ["<S-k>"] = { api.node.open.preview, opts "Open Preview" },
+-- end
+--
+-- function M.config()
+--   local wk = require "which-key"
+--   wk.register {
+--     ["<leader>e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
+--   }
+--
+--   local icons = require "user.icons"
+--
+--   require("nvim-tree").setup()
+-- end
+--
+-- return M

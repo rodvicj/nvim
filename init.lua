@@ -39,12 +39,3 @@ spec "user.extras.todo-comments"
 spec "user.extras.scrollbar"
 
 require "user.lazy"
-
--- NVIM v0.9.6-dev-18+g0ef27180e
--- Build type: Release
--- LuaJIT 2.1.1692716794
---
---    system vimrc file: "$VIM/sysinit.vim"
---   fall-back for $VIM: "/usr/local/share/nvim"
---
--- Run :checkhealth for more inf
