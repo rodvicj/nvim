@@ -54,12 +54,6 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
   end,
 })
 
--- -- Determine OS
--- local os_config = "linux"
--- if vim.fn.has "mac" == 1 then
---   os_config = "mac"
--- end
-
 -- for yanking text in wsl
 if vim.fn.has "wsl" == 1 then
   vim.api.nvim_create_autocmd("TextYankPost", {

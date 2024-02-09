@@ -1,6 +1,7 @@
 local M = {
   "nvim-tree/nvim-tree.lua",
-  -- event = "VeryLazy",
+  event = "VeryLazy",
+  commit = "05f55c1fd6470b31627655c528245794e3cd4b2c", -- fixed annoying highlight in nvimtree if a file is executable
 }
 
 function M.my_on_attach(bufnr)
@@ -23,7 +24,6 @@ function M.my_on_attach(bufnr)
   -- ["C"] = { api.tree.change_root_to_node, opts "CD" },
   -- ["<S-k>"] = { api.node.open.preview, opts "Open Preview" },
 end
-
 
 function M.config()
   local wk = require "which-key"
@@ -143,59 +143,4 @@ function M.config()
     },
   }
 end
-
--- function M.start_telescope(telescope_mode)
---   local node = require("nvim-tree.lib").get_node_at_cursor()
---   local abspath = node.link_to or node.absolute_path
---   local is_folder = node.open ~= nil
---   local basedir = is_folder and abspath or vim.fn.fnamemodify(abspath, ":h")
---   require("telescope.builtin")[telescope_mode] {
---     cwd = basedir,
---   }
--- end
-
--- -- pass to setup along with your other options
--- require("nvim-tree").setup {
---   on_attach = my_on_attach,
--- }
-
 return M
-
--- local M = {
---   "nvim-tree/nvim-tree.lua",
---   -- event = "VeryLazy",
--- }
---
--- function M.my_on_attach(bufnr)
---   local api = require "nvim-tree.api"
---
---   local function opts(desc)
---     return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
---   end
---
---   -- default mappings
---   api.config.mappings.default_on_attach(bufnr)
---
---   -- custom mappings
---   vim.keymap.set("n", "<C-t>", api.tree.change_root_to_parent, opts "Up")
---   vim.keymap.set("n", "?", api.tree.toggle_help, opts "Help")
---   vim.keymap.set("n", "l", api.node.open.edit, opts "Help")
---   vim.keymap.set("n", "h", api.node.navigate.parent_close, opts "Help")
---   -- ["<CR>"] = { api.node.open.edit, opts "Open" },
---   -- ["v"] = { api.node.open.vertical, opts "Open: Vertical Split" },
---   -- ["C"] = { api.tree.change_root_to_node, opts "CD" },
---   -- ["<S-k>"] = { api.node.open.preview, opts "Open Preview" },
--- end
---
--- function M.config()
---   local wk = require "which-key"
---   wk.register {
---     ["<leader>e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
---   }
---
---   local icons = require "user.icons"
---
---   require("nvim-tree").setup()
--- end
---
--- return M
