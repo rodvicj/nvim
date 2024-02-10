@@ -2,13 +2,12 @@ local M = {}
 
 M = {
   "akinsho/bufferline.nvim",
-  opts = M.config,
   version = "*",
   dependencies = "nvim-tree/nvim-web-devicons",
   event = "VeryLazy",
 }
 
-M.config = {
+M.opts = {
   highlights = {
     background = {
       italic = true,
