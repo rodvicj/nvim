@@ -31,7 +31,7 @@ function M.config()
       -- removed unnecessary highlighting in rodvicj/rainbow-delimiters.nvim
       -- javascript, tsx, astro
       javascript = "rainbow-delimiters-react",
-      html = "rainbow-parens",
+      -- html = "rainbow-parens",
       -- htmldjango = "rainbow-delimiters",
       -- NOTE: create highlighting for htmldjango if using it heavily but first you have to work with treesitter's htmldjango first;
     },
@@ -40,7 +40,7 @@ function M.config()
       "rainbowcol2",
       "rainbowcol3",
     },
-    -- blacklist = { "html" },
+    blacklist = { "html" },
   }
 end
 
