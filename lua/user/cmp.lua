@@ -135,7 +135,7 @@ function M.config()
       end,
     },
     sources = {
-      --   { name = "copilot" },
+      { name = "copilot" },
       {
         name = "nvim_lsp",
         entry_filter = function(entry, ctx)
