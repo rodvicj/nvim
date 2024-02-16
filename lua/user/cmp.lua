@@ -108,16 +108,17 @@ function M.config()
       }),
     },
     formatting = {
+      expandable_indicator = true,
       fields = { "kind", "abbr", "menu" },
       format = function(entry, vim_item)
         vim_item.kind = icons.kind[vim_item.kind]
         vim_item.menu = ({
-          nvim_lsp = "",
-          nvim_lua = "",
-          luasnip = "",
-          buffer = "",
-          path = "",
-          emoji = "",
+          nvim_lsp = "lsp",
+          nvim_lua = "nvim_lua",
+          luasnip = "luasnip",
+          buffer = "buffer",
+          path = "path",
+          emoji = "emoji",
         })[entry.source.name]
 
         if entry.source.name == "emoji" then
@@ -134,8 +135,19 @@ function M.config()
       end,
     },
     sources = {
-      { name = "copilot" },
-      { name = "nvim_lsp" },
+      --   { name = "copilot" },
+      {
+        name = "nvim_lsp",
+        entry_filter = function(entry, ctx)
+          local kind = require("cmp.types.lsp").CompletionItemKind[entry:get_kind()]
+
+          if kind == "Text" then
+            return false
+          end
+
+          return true
+        end,
+      },
       { name = "luasnip" },
       { name = "cmp_tabnine" },
       { name = "nvim_lua" },
