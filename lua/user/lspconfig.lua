@@ -132,7 +132,7 @@ function M.config()
 
     -- limit/extend filetypes supported for emmet_ls
     if server == "emmet_ls" then
-      opts.filetypes = { "htmldjango", "astro" }
+      opts.filetypes = { "htmldjango", "astro", "javascriptreact", "typescriptreact" }
     end
 
     if server == "pyright" then
