@@ -1,7 +1,13 @@
+vim.cmd [[
+        :hi      NvimTreeExecFile    guifg=#9ece6a
+        " :hi      NvimTreeSpecialFile guifg=#ff80ff gui=underline
+        " :hi      NvimTreeSymlink     guifg=Yellow  gui=italic
+        " :hi link NvimTreeImageFile   Title
+    ]]
 local M = {
   "nvim-tree/nvim-tree.lua",
   event = "VeryLazy",
-  commit = "05f55c1fd6470b31627655c528245794e3cd4b2c", -- fixed annoying highlight in nvimtree if a file is executable
+  -- commit = "05f55c1fd6470b31627655c528245794e3cd4b2c", -- fixed annoying highlight in nvimtree if a file is executable
 }
 
 function M.my_on_attach(bufnr)

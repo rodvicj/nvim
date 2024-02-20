@@ -39,4 +39,3 @@ spec "user.extras.todo-comments"
 spec "user.extras.scrollbar"
 
 require "user.lazy"
-
