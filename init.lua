@@ -29,6 +29,7 @@ spec "user.project"
 spec "user.indentline"
 spec "user.toggleterm"
 spec "user.bufferline"
+spec "user.autotag"
 
 -- Extras
 spec "user.extras.colorizer"

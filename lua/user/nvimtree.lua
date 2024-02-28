@@ -1,9 +1,7 @@
-vim.cmd [[
-        :hi      NvimTreeExecFile    guifg=#9ece6a
-        " :hi      NvimTreeSpecialFile guifg=#ff80ff gui=underline
-        " :hi      NvimTreeSymlink     guifg=Yellow  gui=italic
-        " :hi link NvimTreeImageFile   Title
-    ]]
+-- remove underlines in executable files
+vim.cmd [[ :hi      NvimTreeExecFile    guifg=#9ece6a ]]
+-- vim.cmd [[ :hi      NvimTreeExecFile    guifg=#9ece6a gui=italic ]]
+
 local M = {
   "nvim-tree/nvim-tree.lua",
   event = "VeryLazy",

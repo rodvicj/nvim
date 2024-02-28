@@ -79,6 +79,7 @@ function M.config()
     "yamlls",
     "emmet_ls",
     "astro",
+    "clangd",
   }
 
   local default_diagnostic_config = {
@@ -128,6 +129,12 @@ function M.config()
 
     if server == "lua_ls" then
       require("neodev").setup {}
+    end
+
+    -- to silence this warning
+    -- warning: multiple different client offset_encodings detected for buffer, this is not supported yet
+    if server == "clangd" then
+      opts.capabilities.offsetEncoding = { "utf-16" }
     end
 
     -- limit/extend filetypes supported for emmet_ls
