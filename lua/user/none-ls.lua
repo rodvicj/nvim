@@ -1,16 +1,34 @@
 local M = {
   "nvimtools/none-ls.nvim",
-  commit = "bb680d752cec37949faca7a1f509e2fe67ab418a",
+  commit = "bb680d752cec37949faca7a1f509e2fe67ab418a", -- before deprecation of some null-ls builtins
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
 }
+
+-- -- Never request typescript-language-server for formatting
+-- vim.lsp.buf.format {
+--   filter = function(client)
+--     return client.name ~= "tsserver"
+--   end,
+-- }
+
+
 
 function M.config()
   local null_ls = require "null-ls"
 
   local formatting = null_ls.builtins.formatting
   local diagnostics = null_ls.builtins.diagnostics
+
+  -- require('none-ls.diagnostics.flake8').with({
+  --   extra_args = { '--max-line-length', '100' },
+  -- }),
+
+  -- M.diagnostics.flake8.with ({
+  --   extra_args = { "--ignore=E501,E203,F821,F401,W504" },
+  -- })
+
 
   null_ls.setup {
     debug = false,
@@ -26,7 +44,8 @@ function M.config()
         -- extra_args = { "--indent=2", "--max-blank-lines=1", "--blank-line-after-tag=load, extends, include, endblock" },
       },
       -- formatting.prettier.with {
-      --   extra_filetypes = { "toml" },
+      --   filetypes = { "html", "css" },
+      --   -- extra_filetypes = { "html", "css" },
       --   -- extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
       -- },
       -- formatting.eslint,

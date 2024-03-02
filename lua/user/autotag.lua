@@ -11,6 +11,7 @@ function M.config()
 
     filetypes = {
       "html",
+      "htmldjango",
       "javascript",
       "typescript",
       "javascriptreact",
