@@ -38,6 +38,9 @@ vim.keymap.set("n", "<Tab>", "<cmd>:popup mousemenu<CR>")
 vim.keymap.set("n", "<s-l>", "<cmd>:BufferLineCycleNext<CR>")
 vim.keymap.set("n", "<s-h>", "<cmd>:BufferLineCyclePrev<CR>")
 
+-- alt-tab to find opened files
+vim.keymap.set("n", "<m-tab>", "<cmd>Telescope buffers<CR>")
+
 -- select all
 vim.keymap.set("n", "<C-a>", "gg<S-v>G")
 
