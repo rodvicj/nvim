@@ -80,6 +80,8 @@ function M.config()
     "emmet_ls",
     "astro",
     "clangd",
+    "rust_analyzer",
+    -- "ruff_lsp",
   }
 
   local default_diagnostic_config = {
@@ -142,7 +144,21 @@ function M.config()
       opts.filetypes = { "htmldjango", "astro", "javascriptreact", "typescriptreact" }
     end
 
+    -- if server == "ruff_lsp" then
+    --   require("lspconfig").ruff_lsp.setup {
+    --     init_options = {
+    --       settings = {
+    --         -- Any extra CLI arguments for `ruff` go here.
+    --         args = {},
+    --       },
+    --     },
+    --   }
+    -- end
+
     if server == "pyright" then
+      require("none-ls.diagnostics.flake8").with {
+        extra_args = { "--ignore=E501,E203,F821,F401,W504" },
+      }
       opts.settings = {
         python = {
           analysis = {

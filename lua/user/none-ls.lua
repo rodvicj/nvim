@@ -3,6 +3,7 @@ local M = {
   commit = "bb680d752cec37949faca7a1f509e2fe67ab418a", -- before deprecation of some null-ls builtins
   dependencies = {
     "nvim-lua/plenary.nvim",
+    "nvimtools/none-ls-extras.nvim",
   },
 }
 
@@ -13,26 +14,26 @@ local M = {
 --   end,
 -- }
 
-
-
 function M.config()
   local null_ls = require "null-ls"
-
   local formatting = null_ls.builtins.formatting
   local diagnostics = null_ls.builtins.diagnostics
-
-  -- require('none-ls.diagnostics.flake8').with({
-  --   extra_args = { '--max-line-length', '100' },
-  -- }),
-
-  -- M.diagnostics.flake8.with ({
-  --   extra_args = { "--ignore=E501,E203,F821,F401,W504" },
-  -- })
-
 
   null_ls.setup {
     debug = false,
     sources = {
+      -- require("none-ls.diagnostics.cpplint"),
+      -- require("none-ls.formatting.jq"),
+      -- require("none-ls.code_actions.eslint"),
+      -- require("none-ls.diagnostics.flake8"),
+
+      -- require("none-ls.diagnostics.flake8").with {
+      --   extra_args = { "--ignore=E501,E203,F821,F401,W504,E303" },
+      -- },
+
+      diagnostics.flake8.with {
+        extra_args = { "--ignore=E501,E203,F821,F401,W504" },
+      },
       formatting.stylua,
       formatting.prettier,
       formatting.black,
@@ -49,10 +50,7 @@ function M.config()
       --   -- extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
       -- },
       -- formatting.eslint,
-      diagnostics.flake8.with {
-        extra_args = { "--ignore=E501,E203,F821,F401,W504" },
-      },
-      -- diagnostics.flake8,
+
       null_ls.builtins.completion.spell,
     },
   }
