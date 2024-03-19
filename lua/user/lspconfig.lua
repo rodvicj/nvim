@@ -70,14 +70,13 @@ function M.config()
     "lua_ls",
     "cssls",
     "html",
-    "tsserver",
+    -- "tsserver",
     "eslint",
-    "tsserver",
     "pyright",
     "bashls",
     "jsonls",
     "yamlls",
-    "emmet_ls",
+    -- "emmet_ls",
     "astro",
     "clangd",
     "rust_analyzer",
@@ -139,10 +138,10 @@ function M.config()
       opts.capabilities.offsetEncoding = { "utf-16" }
     end
 
-    -- limit/extend filetypes supported for emmet_ls
-    if server == "emmet_ls" then
-      opts.filetypes = { "htmldjango", "astro", "javascriptreact", "typescriptreact" }
-    end
+    -- -- limit/extend filetypes supported for emmet_ls
+    -- if server == "emmet_ls" then
+    --   opts.filetypes = { "htmldjango", "astro", "javascriptreact", "typescriptreact" }
+    -- end
 
     -- if server == "ruff_lsp" then
     --   require("lspconfig").ruff_lsp.setup {
@@ -156,9 +155,6 @@ function M.config()
     -- end
 
     if server == "pyright" then
-      require("none-ls.diagnostics.flake8").with {
-        extra_args = { "--ignore=E501,E203,F821,F401,W504" },
-      }
       opts.settings = {
         python = {
           analysis = {
@@ -172,6 +168,11 @@ function M.config()
         },
       }
     end
+
+    -- if server == "eslint" then
+    --   opts.filetypes = { "javascript" }
+    --   opts.globals = { semi = { "error", "always" }, quotes = { "error", "single" } }
+    -- end
 
     lspconfig[server].setup(opts)
   end

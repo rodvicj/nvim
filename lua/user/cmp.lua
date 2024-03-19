@@ -6,10 +6,11 @@ local M = {
       "hrsh7th/cmp-nvim-lsp",
       event = "InsertEnter",
     },
-    {
-      "hrsh7th/cmp-emoji",
-      event = "InsertEnter",
-    },
+    -- -- uncomment if you need emoji shortcuts in your text editor
+    -- {
+    --   "hrsh7th/cmp-emoji",
+    --   event = "InsertEnter",
+    -- },
     {
       "hrsh7th/cmp-buffer",
       event = "InsertEnter",
