@@ -30,6 +30,7 @@ spec "user.toggleterm"
 spec "user.bufferline"
 spec "user.autotag"
 spec "user.none-ls"
+spec "user.markdown-preview"
 
 -- Extras
 spec "user.extras.colorizer"
