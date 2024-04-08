@@ -134,9 +134,9 @@ function M.config()
 
     -- to silence this warning
     -- warning: multiple different client offset_encodings detected for buffer, this is not supported yet
-    if server == "clangd" then
-      opts.capabilities.offsetEncoding = { "utf-16" }
-    end
+    -- if server == "clangd" then
+    --   opts.capabilities.offsetEncoding = { "utf-16" }
+    -- end
 
     -- -- limit/extend filetypes supported for emmet_ls
     -- if server == "emmet_ls" then
@@ -154,20 +154,6 @@ function M.config()
     --   }
     -- end
 
-    if server == "pyright" then
-      opts.settings = {
-        python = {
-          analysis = {
-            typeCheckingMode = "off",
-            diagnosticMode = "workspace",
-            inlayHints = {
-              variableTypes = true,
-              functionReturnTypes = true,
-            },
-          },
-        },
-      }
-    end
 
     -- if server == "eslint" then
     --   opts.filetypes = { "javascript" }

@@ -1,5 +1,5 @@
--- remove underlines in executable files
-vim.cmd [[ :hi      NvimTreeExecFile    guifg=#9ece6a gui=bold ]]
+-- -- remove underlines in executable files
+-- vim.cmd [[ :hi      NvimTreeExecFile    guifg=#9ece6a gui=bold ]]
 
 local M = {
   "nvim-tree/nvim-tree.lua",
