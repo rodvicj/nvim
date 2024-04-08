@@ -136,6 +136,9 @@ function M.config()
     -- warning: multiple different client offset_encodings detected for buffer, this is not supported yet
     if server == "clangd" then
       opts.capabilities.offsetEncoding = { "utf-16" }
+      -- opts.capabilities.IndentWidth = { "4" }
+      -- NOTE: cant make clangd to use 4 spaces indentation so just use editorconfig instead if you want to configure number of spaces
+      -- https://editorconfig.org/
     end
 
     -- -- limit/extend filetypes supported for emmet_ls
