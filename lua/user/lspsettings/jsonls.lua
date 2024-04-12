@@ -14,3 +14,6 @@ return {
     },
   },
 }
+
+-- add this to last line of jsonc files to remove errors from // comments
+-- // vim: filetype=jsonc
