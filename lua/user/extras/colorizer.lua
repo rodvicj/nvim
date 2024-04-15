@@ -5,16 +5,17 @@ local M = {
 
 function M.config()
   require("colorizer").setup {
-    -- filetypes = {
-    --   "typescript",
-    --   "typescriptreact",
-    --   "javascript",
-    --   "javascriptreact",
-    --   "css",
-    --   "html",
-    --   "astro",
-    --   "lua",
-    -- },
+    filetypes = {
+      "typescript",
+      "typescriptreact",
+      "javascript",
+      "javascriptreact",
+      "css",
+      "html",
+      "astro",
+      "lua",
+      "json",
+    },
     user_default_options = {
       names = false,
       rgb_fn = true,
