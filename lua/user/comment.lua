@@ -12,14 +12,15 @@ local M = {
 function M.config()
   local wk = require "which-key"
   wk.register {
-    -- ["<leader>/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment" },
-    ["<c-_>"] = { "<Plug>(comment_toggle_linewise_current)", "Comment" },
-    ["<c-/>"] = { "<Plug>(comment_toggle_linewise_current)", "Comment" },
+    ["<leader>/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment" },
+    -- ["<c-_>"] = { "<Plug>(comment_toggle_linewise_current)", "Comment" },
+    -- ["<c-/>"] = { "<Plug>(comment_toggle_linewise_current)", "Comment" },
   }
 
   wk.register {
-    ["<c-_>"] = { "<Plug>(comment_toggle_linewise_visual)", "Comment", mode = "v" },
-    ["<c-/>"] = { "<Plug>(comment_toggle_linewise_visual)", "Comment", mode = "v" },
+    ["<leader>/"] = { "<Plug>(comment_toggle_linewise_visual)", "Comment", mode = "v" },
+    -- ["<c-_>"] = { "<Plug>(comment_toggle_linewise_visual)", "Comment", mode = "v" },
+    -- ["<c-/>"] = { "<Plug>(comment_toggle_linewise_visual)", "Comment", mode = "v" },
   }
 
   vim.g.skip_ts_context_commentstring_module = true
