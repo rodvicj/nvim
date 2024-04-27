@@ -44,9 +44,9 @@ function M.config()
         -- extra_args = { "--indent=2", "--max-blank-lines=1", "--blank-line-after-tag=load, extends, include, endblock" },
       },
       -- formatting.prettier.with {
-      --   filetypes = { "html", "css" },
+      --   -- filetypes = { "html", "css" },
       --   -- extra_filetypes = { "html", "css" },
-      --   -- extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
+      --   extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
       -- },
       -- formatting.eslint,
       -- null_ls.builtins.diagnostics.eslint,

@@ -13,7 +13,6 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 keymap("n", "<C-tab>", "<c-6>", opts)
-
 keymap("n", "n", "nzz", opts)
 keymap("n", "N", "Nzz", opts)
 keymap("n", "*", "*zz", opts)
@@ -24,6 +23,10 @@ keymap("n", "g#", "g#zz", opts)
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
+keymap("v", "K", ":move '<-2<CR>gv-gv", opts)
+keymap("v", "J", ":move '>+1<CR>gv-gv", opts)
+-- visual_block_mode["K"] = ":move '<-2<CR>gv-gv"
+-- visual_block_mode["J"] = ":move '>+1<CR>gv-gv"
 
 keymap("x", "p", [["_dP]])
 
