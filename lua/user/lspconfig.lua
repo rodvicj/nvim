@@ -22,10 +22,12 @@ end
 M.on_attach = function(client, bufnr)
   lsp_keymaps(bufnr)
 
-  if client.supports_method "textDocument/inlayHint" then
-    -- NOTE: seems theres an error when this function is called, thus inlay_hints keymapping also throws error when activated
-    vim.lsp.inlay_hint.enable(bufnr, true)
-  end
+  -- uncomment if you want to enable inlay_hint at startup
+  -- if client.supports_method "textDocument/inlayHint" then
+  --   -- NOTE: seems theres an error when this function is called, thus inlay_hints keymapping also throws error when activated
+  --   -- vim.lsp.inlay_hint.enable(bufnr, true)
+  --   vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+  -- end
 end
 
 function M.common_capabilities()
@@ -35,8 +37,9 @@ function M.common_capabilities()
 end
 
 M.toggle_inlay_hints = function()
-  local bufnr = vim.api.nvim_get_current_buf()
-  vim.lsp.inlay_hint.enable(bufnr, not vim.lsp.inlay_hint.is_enabled(bufnr))
+  -- local bufnr = vim.api.nvim_get_current_buf()
+  -- vim.lsp.inlay_hint.enable(bufnr, not vim.lsp.inlay_hint.is_enabled(bufnr))
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end
 
 function M.config()
@@ -153,7 +156,6 @@ function M.config()
     --     },
     --   }
     -- end
-
 
     -- if server == "eslint" then
     --   opts.filetypes = { "javascript" }
