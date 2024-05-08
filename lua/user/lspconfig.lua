@@ -35,7 +35,7 @@ end
 
 M.toggle_inlay_hints = function()
   local bufnr = vim.api.nvim_get_current_buf()
-  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({bufnr = bufnr}), { bufnr = bufnr })
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = bufnr }, { bufnr = bufnr })
 end
 
 function M.config()
@@ -69,7 +69,6 @@ function M.config()
     "lua_ls",
     "cssls",
     "html",
-    -- "tsserver",
     "pyright",
     "bashls",
     "jsonls",
@@ -77,6 +76,7 @@ function M.config()
     "astro",
     "clangd",
     "rust_analyzer",
+    -- "tsserver",
     -- "eslint",
   }
 
@@ -128,34 +128,6 @@ function M.config()
     if server == "lua_ls" then
       require("neodev").setup {}
     end
-
-    -- to silence this warning
-    -- warning: multiple different client offset_encodings detected for buffer, this is not supported yet
-    -- if server == "clangd" then
-    --   opts.capabilities.offsetEncoding = { "utf-16" }
-    -- end
-
-    -- -- limit/extend filetypes supported for emmet_ls
-    -- if server == "emmet_ls" then
-    --   opts.filetypes = { "htmldjango", "astro", "javascriptreact", "typescriptreact" }
-    -- end
-
-    -- if server == "ruff_lsp" then
-    --   require("lspconfig").ruff_lsp.setup {
-    --     init_options = {
-    --       settings = {
-    --         -- Any extra CLI arguments for `ruff` go here.
-    --         args = {},
-    --       },
-    --     },
-    --   }
-    -- end
-
-    -- if server == "eslint" then
-    --   opts.filetypes = { "javascript" }
-    --   opts.globals = { semi = { "error", "always" }, quotes = { "error", "single" } }
-    -- end
-
 
     lspconfig[server].setup(opts)
   end

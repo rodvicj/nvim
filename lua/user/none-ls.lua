@@ -7,13 +7,6 @@ local M = {
   },
 }
 
--- -- Never request typescript-language-server for formatting
--- vim.lsp.buf.format {
---   filter = function(client)
---     return client.name ~= "tsserver"
---   end,
--- }
-
 function M.config()
   local null_ls = require "null-ls"
   local formatting = null_ls.builtins.formatting
@@ -22,7 +15,7 @@ function M.config()
   null_ls.setup {
     debug = false,
     sources = {
-      require "none-ls.diagnostics.eslint",
+      require "none-ls.diagnostics.eslint_d",
       require("none-ls.diagnostics.flake8").with {
         extra_args = { "--ignore=E501,E203,F821,F401,W504,E303,W292" },
       },
@@ -34,14 +27,7 @@ function M.config()
       formatting.djlint.with {
         -- extra_filetypes = { "html", "htmldjango" },
         extra_args = { "--indent=2", "--max-blank-lines=1", "--blank-line-after-tag=extends", "--close-void-tags" },
-        -- extra_args = { "--indent=2", "--max-blank-lines=1", "--blank-line-after-tag=load, extends, include, endblock" },
       },
-      -- formatting.prettier.with {
-      --   -- filetypes = { "html", "css" },
-      --   -- extra_filetypes = { "html", "css" },
-      --   extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
-      -- },
-
       null_ls.builtins.completion.spell,
     },
   }
