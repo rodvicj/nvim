@@ -22,17 +22,10 @@ function M.config()
   null_ls.setup {
     debug = false,
     sources = {
-      -- require("none-ls.diagnostics.cpplint"),
-      -- require("none-ls.formatting.jq"),
       -- require("none-ls.diagnostics.eslint"),
-      -- require("none-ls.diagnostics.flake8"),
-
       require("none-ls.diagnostics.flake8").with {
         extra_args = { "--ignore=E501,E203,F821,F401,W504,E303,W292" },
       },
-      -- diagnostics.flake8.with {
-      --   extra_args = { "--ignore=E501,E203,F821,F401,W504" },
-      -- },
       formatting.stylua,
       formatting.prettier,
       formatting.black,
@@ -48,8 +41,6 @@ function M.config()
       --   -- extra_filetypes = { "html", "css" },
       --   extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
       -- },
-      -- formatting.eslint,
-      -- null_ls.builtins.diagnostics.eslint,
 
       null_ls.builtins.completion.spell,
     },

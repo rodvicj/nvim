@@ -70,16 +70,14 @@ function M.config()
     "cssls",
     "html",
     "tsserver",
-    "eslint",
     "pyright",
     "bashls",
     "jsonls",
     "yamlls",
-    -- "emmet_ls",
     "astro",
     "clangd",
     "rust_analyzer",
-    -- "ruff_lsp",
+    "eslint",
   }
 
   local default_diagnostic_config = {
