@@ -69,7 +69,7 @@ function M.config()
     "lua_ls",
     "cssls",
     "html",
-    "tsserver",
+    -- "tsserver",
     "pyright",
     "bashls",
     "jsonls",
@@ -77,7 +77,7 @@ function M.config()
     "astro",
     "clangd",
     "rust_analyzer",
-    "eslint",
+    -- "eslint",
   }
 
   local default_diagnostic_config = {
@@ -155,6 +155,7 @@ function M.config()
     --   opts.filetypes = { "javascript" }
     --   opts.globals = { semi = { "error", "always" }, quotes = { "error", "single" } }
     -- end
+
 
     lspconfig[server].setup(opts)
   end
