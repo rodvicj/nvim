@@ -6,7 +6,15 @@ local M = {
 
 function M.config()
   require("nvim-treesitter.configs").setup {
-    ensure_installed = { "lua", "markdown", "markdown_inline", "bash", "python", "javascript", "json" },
+    ensure_installed = {
+      "lua",
+      "markdown",
+      "markdown_inline",
+      "bash",
+      "python",
+      "javascript",
+      "json",
+    },
     highlight = { enable = true },
     indent = { enable = true },
     -- Install parsers synchronously (only applied to `ensure_installed`)

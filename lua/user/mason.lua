@@ -2,25 +2,12 @@ local M = {
   "williamboman/mason-lspconfig.nvim",
   dependencies = {
     "williamboman/mason.nvim",
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    "nvim-lua/plenary.nvim",
   },
 }
 
 function M.config()
-  local servers = {
-    "lua_ls",
-    "cssls",
-    "html",
-    "tsserver",
-    "pyright",
-    "bashls",
-    "jsonls",
-    "yamlls",
-    "marksman",
-    "tailwindcss",
-    "rust_analyzer",
-    "eslint",
-  }
-
   require("mason").setup {
     ui = {
       border = "rounded",
@@ -28,7 +15,28 @@ function M.config()
   }
 
   require("mason-lspconfig").setup {
-    ensure_installed = servers,
+    ensure_installed = {
+      "lua_ls",
+      "cssls",
+      "html",
+      "tsserver",
+      "pyright",
+      "bashls",
+      "jsonls",
+      "yamlls",
+      "marksman",
+      "tailwindcss",
+      "rust_analyzer",
+    },
+  }
+
+  require("mason-tool-installer").setup {
+    ensure_installed = {
+      "prettier",
+      "stylua",
+      "eslint",
+      "flake8",
+    },
   }
 end
 

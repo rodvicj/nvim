@@ -1,5 +1,6 @@
 local M = {
   "neovim/nvim-lspconfig",
+  commit = "15a93b34dbd50dd50d06410eb52c9603ad26a7a5",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     {
@@ -23,7 +24,7 @@ M.on_attach = function(client, bufnr)
   lsp_keymaps(bufnr)
 
   if client.supports_method "textDocument/inlayHint" then
-    vim.lsp.inlay_hint.enable(true)
+    vim.lsp.inlay_hint.enable(false, {bufnr = bufnr})
   end
 end
 
@@ -66,6 +67,7 @@ function M.config()
   local icons = require "user.icons"
 
   local servers = {
+    -- "tsserver",
     "lua_ls",
     "cssls",
     "html",
@@ -76,8 +78,7 @@ function M.config()
     "astro",
     "clangd",
     "rust_analyzer",
-    -- "tsserver",
-    -- "eslint",
+    "eslint",
   }
 
   local default_diagnostic_config = {

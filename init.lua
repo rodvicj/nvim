@@ -43,3 +43,4 @@ spec "user.extras.typescript-tools"
 
 require "user.lazy"
 -- d shift 4 -- deletes current cursor up to last char in the same line
+-- 5e875ae8d07dd204ce5b1d97a8acf70e3835b40b --jsx treesitter highlight still not messed up
