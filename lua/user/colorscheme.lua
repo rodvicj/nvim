@@ -6,7 +6,10 @@ local M = {
 
 function M.config()
   require("tokyonight").setup {
-    on_highlights = function(hl)
+    on_highlights = function(hl, _)
+      hl.rainbowcol1 = { fg = "Gold" }
+      hl.rainbowcol2 = { fg = "Orchid" }
+      hl.rainbowcol3 = { fg = "DodgerBlue" }
       hl.WinBar = { link = "none" }
       hl.WinBarNC = { link = "none" }
     end,

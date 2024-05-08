@@ -15,6 +15,11 @@ function M.config()
     "pyright",
     "bashls",
     "jsonls",
+    "yamlls",
+    "marksman",
+    "tailwindcss",
+    "rust_analyzer",
+    "eslint",
   }
 
   require("mason").setup {

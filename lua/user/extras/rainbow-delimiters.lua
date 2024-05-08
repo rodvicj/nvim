@@ -3,21 +3,6 @@ local M = {
   event = "VeryLazy",
 }
 
-local ok, tokyonight = pcall(require, "tokyonight")
-if not ok then
-  return
-end
-
--- custom colors for rainbow highlights
-tokyonight.setup {
-  on_highlights = function(hl)
-    hl.rainbowcol1 = { fg = "Gold" }
-    hl.rainbowcol2 = { fg = "Orchid" }
-    hl.rainbowcol3 = { fg = "DodgerBlue" }
-  end,
-  -- use the night style
-  style = "storm",
-}
 
 function M.config()
   local rainbow_delimiters = require "rainbow-delimiters"

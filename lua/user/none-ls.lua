@@ -24,7 +24,7 @@ function M.config()
     sources = {
       -- require("none-ls.diagnostics.cpplint"),
       -- require("none-ls.formatting.jq"),
-      -- require("none-ls.code_actions.eslint"),
+      -- require("none-ls.diagnostics.eslint"),
       -- require("none-ls.diagnostics.flake8"),
 
       require("none-ls.diagnostics.flake8").with {
