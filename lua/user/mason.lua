@@ -19,7 +19,7 @@ function M.config()
       "lua_ls",
       "cssls",
       "html",
-      "tsserver",
+      -- "tsserver",
       "pyright",
       "bashls",
       "jsonls",
@@ -36,6 +36,7 @@ function M.config()
       "stylua",
       "eslint",
       "flake8",
+      "black",
     },
   }
 end

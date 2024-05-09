@@ -23,8 +23,50 @@ end
 M.on_attach = function(client, bufnr)
   lsp_keymaps(bufnr)
 
+  -- remove error codes in tsserver diagnostics
+  -- if client.name == "typescript-tools" then
+  --   local function filter_tsserver_diagnostics(_, result, ctx, config)
+  --     if result.diagnostics == nil then
+  --       return
+  --     end
+
+  --     -- -- remove tsserver diagnostic
+  --     -- for idx = #result.diagnostics, 1, -1 do
+  --     --   -- local entry = result.diagnostics[idx]
+  --     --   table.remove(result.diagnostics, idx)
+  --     -- end
+
+  --     -- remove specific error codes in tsserver
+  --     local error_codes = { 1005 }
+  --     local idx = 1
+  --     local hasMatch = false
+
+  --     while idx <= #result.diagnostics do
+  --       local entry = result.diagnostics[idx]
+
+  --       for _, error in ipairs(error_codes) do
+  --         if entry.code == error then
+  --           table.remove(result.diagnostics, idx)
+  --           hasMatch = true
+  --           break -- Exit the loop after removing the entry
+  --         end
+  --       end
+
+  --       if not hasMatch then
+  --         idx = idx + 1
+  --       end
+
+  --       hasMatch = false -- Reset the flag for the next iteration
+  --     end
+
+  --     vim.lsp.diagnostic.on_publish_diagnostics(_, result, ctx, config)
+  --   end
+
+  --   vim.lsp.handlers["textDocument/publishDiagnostics"] = filter_tsserver_diagnostics
+  -- end
+
   if client.supports_method "textDocument/inlayHint" then
-    vim.lsp.inlay_hint.enable(false, {bufnr = bufnr})
+    vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
   end
 end
 

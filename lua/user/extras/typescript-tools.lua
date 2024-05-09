@@ -15,6 +15,7 @@ function M.config()
     settings = {
       -- spawn additional tsserver instance to calculate diagnostics on it
       separate_diagnostic_server = true,
+      -- "change"|"insert_leave" determine when the client asks the server about diagnostic
       expose_as_code_action = "all",
       -- tsserver_plugins = {},
       tsserver_max_memory = "auto",
