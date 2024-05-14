@@ -40,6 +40,7 @@ spec "user.extras.neoscroll"
 spec "user.extras.todo-comments"
 spec "user.extras.scrollbar"
 spec "user.extras.typescript-tools"
+spec "user.extras.live-server"
 
 require "user.lazy"
 -- d shift 4 -- deletes current cursor up to last char in the same line

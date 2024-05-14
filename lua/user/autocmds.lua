@@ -88,3 +88,20 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
     end
   end,
 })
+
+-- Persistent Folds
+vim.api.nvim_create_augroup("Persistent_Folds", { clear = true })
+vim.api.nvim_create_autocmd("BufWinLeave", {
+  pattern = "*.*",
+  callback = function()
+    vim.cmd.mkview()
+  end,
+  group = "Persistent_Folds",
+})
+vim.api.nvim_create_autocmd("BufWinEnter", {
+  pattern = "*.*",
+  callback = function()
+    vim.cmd.loadview { mods = { emsg_silent = true } }
+  end,
+  group = "Persistent_Folds",
+})

@@ -16,7 +16,7 @@ function M.config()
       "json",
     },
     highlight = { enable = true },
-    indent = { enable = true },
+    indent = { enable = true, disable = { "html", "python" } },
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
 
