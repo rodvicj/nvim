@@ -14,6 +14,8 @@ function M.config()
       "python",
       "javascript",
       "json",
+      "sql",
+      "yaml",
     },
     highlight = { enable = true },
     indent = { enable = true, disable = { "html", "python" } },
