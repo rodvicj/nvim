@@ -45,3 +45,4 @@ spec "user.extras.markdown-preview"
 spec "user.extras.oil"
 
 require "user.lazy"
+
