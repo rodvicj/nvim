@@ -7,12 +7,15 @@ local M = {
 
 function M.config()
   require("tokyonight").setup {
-    on_highlights = function(hl, _)
+    on_highlights = function(hl, c)
       hl.rainbowcol1 = { fg = "Gold" }
       hl.rainbowcol2 = { fg = "Orchid" }
       hl.rainbowcol3 = { fg = "DodgerBlue" }
       hl.WinBar = { link = "none" }
       hl.WinBarNC = { link = "none" }
+
+      -- default for CursorLine { fg = c.orange, bold = true }
+      hl.CursorLineNr = {fg = c.dark5, bold = false}
     end,
   }
 

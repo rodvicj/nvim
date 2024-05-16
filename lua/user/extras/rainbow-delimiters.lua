@@ -15,6 +15,7 @@ function M.config()
       [""] = "rainbow-delimiters",
       javascript = "rainbow-delimiters",
       tsx = "rainbow-parens",
+      xml = "rainbow-parens"
     },
     highlight = {
       "rainbowcol1",

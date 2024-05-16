@@ -8,14 +8,10 @@ function M.config()
   require("nvim-treesitter.configs").setup {
     ensure_installed = {
       "lua",
-      "markdown",
-      "markdown_inline",
-      "bash",
       "python",
       "javascript",
       "json",
-      "sql",
-      "yaml",
+      "markdown",
     },
     highlight = { enable = true },
     indent = { enable = true, disable = { "html", "python" } },

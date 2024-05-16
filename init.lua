@@ -30,7 +30,6 @@ spec "user.toggleterm"
 spec "user.bufferline"
 spec "user.autotag"
 spec "user.none-ls"
-spec "user.markdown-preview"
 
 -- Extras
 spec "user.extras.colorizer"
@@ -42,8 +41,7 @@ spec "user.extras.scrollbar"
 spec "user.extras.typescript-tools"
 spec "user.extras.live-server"
 spec "user.extras.dadbod-ui"
+spec "user.extras.markdown-preview"
+spec "user.extras.oil"
 
 require "user.lazy"
--- d shift 4 -- deletes current cursor up to last char in the same line
--- 5e875ae8d07dd204ce5b1d97a8acf70e3835b40b --jsx treesitter highlight still not messed up
--- c30ebb17f6b98625e3db8f032c2223876bb60f99 --commit that messed up my jsx, htmldjango treesitter highlight
