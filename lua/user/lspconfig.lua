@@ -1,6 +1,6 @@
 local M = {
   "neovim/nvim-lspconfig",
-  commit = "15a93b34dbd50dd50d06410eb52c9603ad26a7a5",
+  -- commit = "15a93b34dbd50dd50d06410eb52c9603ad26a7a5",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     {
@@ -109,7 +109,6 @@ function M.config()
   local icons = require "user.icons"
 
   local servers = {
-    -- "tsserver",
     "lua_ls",
     "cssls",
     "html",
@@ -122,6 +121,7 @@ function M.config()
     "rust_analyzer",
     "eslint",
     "gopls",
+    -- "tsserver",
   }
 
   local default_diagnostic_config = {

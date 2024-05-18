@@ -1,6 +1,6 @@
 local M = {
   "lewis6991/gitsigns.nvim",
-  -- event = "BufEnter",
+  event = "BufEnter",
   cmd = "Gitsigns",
 }
 M.config = function()
@@ -24,9 +24,24 @@ M.config = function()
       "Git Diff",
     },
   }
+  -- signs = {
+  --    add          = { text = '┃' },
+  --    change       = { text = '┃' },
+  --    delete       = { text = '_' },
+  --    topdelete    = { text = '‾' },
+  --    changedelete = { text = '~' },
+  --    untracked    = { text = '┆' },
+  --  },
 
   require("gitsigns").setup {
     signs = {
+      -- untracked = {
+      --   hl = "GitSignsAdd",
+      --   text = icons.ui.BoldLineDashedMiddle,
+      --   numhl = "GitSignsAddNr",
+      --   linehl = "GitSignsAddLn",
+      --   -- text = "┆"
+      -- },
       add = {
         hl = "GitSignsAdd",
         text = icons.ui.BoldLineMiddle,
