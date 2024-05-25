@@ -20,6 +20,10 @@ keymap("n", "#", "#zz", opts)
 keymap("n", "g*", "g*zz", opts)
 keymap("n", "g#", "g#zz", opts)
 
+-- remap neovim macro record
+keymap("n", "q", "<nop>", opts)
+keymap("n", "Q", "q", opts)
+
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
