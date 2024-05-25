@@ -1,6 +1,5 @@
 local M = {
   "nvimtools/none-ls.nvim",
-  -- commit = "bb680d752cec37949faca7a1f509e2fe67ab418a", -- before deprecation of some null-ls builtins
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvimtools/none-ls-extras.nvim",
@@ -21,6 +20,11 @@ function M.config()
       -- },
       formatting.stylua,
       formatting.prettier,
+      -- formatting.prettier.with {
+      --   -- extra_filetypes = { "toml" },
+      --   filetypes = { "javascript" },
+      --   -- extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
+      -- },
       formatting.black,
 
       -- for htmldjango

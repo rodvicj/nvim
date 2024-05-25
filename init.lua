@@ -43,5 +43,8 @@ spec "user.extras.live-server"
 spec "user.extras.dadbod-ui"
 spec "user.extras.markdown-preview"
 spec "user.extras.oil"
+spec "user.extras.kmonad"
+spec "user.extras.hex"
+spec "user.extras.zen"
 
 require "user.lazy"
