@@ -37,6 +37,7 @@ function M.config()
       "eslint",
       "flake8",
       "black",
+      "djlint",
     },
   }
 end
