@@ -11,6 +11,8 @@ function M.config()
       hl.rainbowcol1 = { fg = "Gold" }
       hl.rainbowcol2 = { fg = "Orchid" }
       hl.rainbowcol3 = { fg = "DodgerBlue" }
+
+      --prevent unnecessary highlight in top winbar when splitting view
       hl.WinBar = { link = "none" }
       hl.WinBarNC = { link = "none" }
 
