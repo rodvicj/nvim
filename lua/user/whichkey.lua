@@ -18,7 +18,6 @@ function M.config()
     ["c"] = { "<cmd>BufferKill<CR>", "Close Buffer" },
     ["w"] = { "<cmd>w!<CR>", "Save" },
 
-    --
     -- ["gd"] = { vim.lsp.buf.definition, "Goto Definition" },
     -- ["gD"] = { vim.lsp.buf.declaration, "Goto Declaration" },
     -- ["gr"] = { vim.lsp.buf.references, "Goto references" },

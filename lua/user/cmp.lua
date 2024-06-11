@@ -392,6 +392,9 @@ function M.config()
   local cmp = require "cmp"
   local luasnip = require "luasnip"
   require("luasnip/loaders/from_vscode").lazy_load()
+  require("luasnip").filetype_extend("typescriptreact", { "html" })
+  require("luasnip").filetype_extend("javascriptreact", { "html" })
+
 
   vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
   vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
@@ -530,6 +533,7 @@ function M.config()
       { name = "buffer" },
     },
   })
+
 end
 
 return M
