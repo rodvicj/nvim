@@ -48,12 +48,4 @@ spec "user.extras.hex"
 spec "user.extras.zen"
 
 require "user.lazy"
-
--- ## install
--- pacman -S xdg-utils xdg-user-dirs
-
--- ## add directories
--- xdg-user-dirs-update
-
-
--- netplwiz
+-- f + char == find next char
