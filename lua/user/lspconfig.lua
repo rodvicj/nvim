@@ -18,6 +18,7 @@ local function lsp_keymaps(bufnr)
   keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
   keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
   keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+  keymap(bufnr, "n", "gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
 end
 
 M.on_attach = function(client, bufnr)
@@ -83,12 +84,18 @@ end
 
 function M.config()
   local wk = require "which-key"
+
   wk.register {
     ["<leader>la"] = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
     ["<leader>lf"] = {
       "<cmd>lua vim.lsp.buf.format({async = true, filter = function(client) return client.name ~= 'typescript-tools' end})<cr>",
       "Format",
     },
+    -- ["<leader>lf"] = {
+    --   "<cmd>lua vim.lsp.buf.format({async = true, filter = function(client) return (client.name ~= 'html' and client.name ~= 'typescript-tools') end})<cr>",
+    --   "Format",
+    -- },
+
     ["<leader>li"] = { "<cmd>LspInfo<cr>", "Info" },
     ["<leader>lj"] = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next Diagnostic" },
     ["<leader>lh"] = { "<cmd>lua require('user.lspconfig').toggle_inlay_hints()<cr>", "Hints" },
@@ -121,6 +128,7 @@ function M.config()
     "rust_analyzer",
     "eslint",
     "gopls",
+    "tailwindcss",
     -- "tsserver",
   }
 

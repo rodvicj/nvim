@@ -49,3 +49,4 @@ spec "user.extras.zen"
 
 require "user.lazy"
 -- 9 18 33
+-- f + char == find next char

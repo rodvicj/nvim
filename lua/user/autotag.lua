@@ -4,7 +4,7 @@ local M = {
 
 function M.config()
   require("nvim-ts-autotag").setup {
-    did_setup = false,
+    -- did_setup = false,
     opts = {
       -- Defaults
       enable_close = true, -- Auto close tags
