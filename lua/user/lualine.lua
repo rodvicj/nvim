@@ -36,7 +36,8 @@ end
 -- formatters and linters from null-ls, nvim-lint and formatter.nvim
 
 function M.get_attached_clients()
-  local buf_clients = vim.lsp.get_active_clients { bufnr = 0 }
+  local buf_clients = vim.lsp.get_clients { bufnr = 0 }
+
   if #buf_clients == 0 then
     return "LSP Inactive"
   end
@@ -214,7 +215,7 @@ function M.config()
       lualine_x = { treesitter, encoding, spaces, attached_clients, "filetype" },
       -- lualine_y = {},
       lualine_y = { "location" },
-      lualine_z = {"progress"},
+      lualine_z = { "progress" },
     },
     -- extensions = { "quickfix", "man", "fugitive" },
   }
