@@ -53,3 +53,6 @@ require "user.lazy"
 
 -- nvim-colorizer/colorizer/tailwind.lua
 -- 118 return vim.lsp.get_active_clients { bufnr = buf, name = "tailwindcss" }
+--
+-- 9 18 33
+-- f + char == find next char
