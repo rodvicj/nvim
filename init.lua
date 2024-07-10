@@ -32,7 +32,7 @@ spec "user.autotag"
 spec "user.none-ls"
 
 -- Extras
-spec "user.extras.colorizer"
+-- spec "user.extras.colorizer"
 spec "user.extras.fidget"
 spec "user.extras.rainbow-delimiters"
 spec "user.extras.neoscroll"
@@ -46,7 +46,7 @@ spec "user.extras.oil"
 spec "user.extras.kmonad"
 spec "user.extras.hex"
 spec "user.extras.zen"
--- spec "user.extras.hipatterns"
+spec "user.extras.hipatterns"
 
 require "user.lazy"
 -- f + char == find next char
