@@ -46,7 +46,9 @@ spec "user.extras.oil"
 spec "user.extras.kmonad"
 spec "user.extras.hex"
 spec "user.extras.zen"
+-- spec "user.extras.hipatterns"
 
 require "user.lazy"
 -- f + char == find next char
 -- zfat - fold html tags
+-- shift + S == replace line and go insert mode

@@ -30,6 +30,7 @@ function M.config()
     -- ["gs"] = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "show signature help" },
 
     q = { "<cmd>confirm q<CR>", "Quit" },
+    -- q = { "<cmd>quit | bprevious<CR>", "Quit" },
     h = { "<cmd>nohlsearch<CR>", "NOHL" },
     -- [";"] = { "<cmd>tabnew | terminal<CR>", "Term" },
     [";"] = { "<cmd>Alpha<CR>", "Dashboard" },
