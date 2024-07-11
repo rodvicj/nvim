@@ -12,6 +12,7 @@ function M.config()
       "javascript",
       "javascriptreact",
       "css",
+      "scss",
       "html",
       "astro",
       "lua",
@@ -19,9 +20,16 @@ function M.config()
     },
     user_default_options = {
       names = false,
-      rgb_fn = true,
-      hsl_fn = true,
+      css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
       tailwind = "both",
+
+      -- names = false,
+      -- RGB = false, -- #RGB hex codes
+      -- RRGGBB = false, -- #RRGGBB hex codes
+      -- RRGGBBAA = false, -- #RRGGBBAA hex codes
+      -- AARRGGBB = false, -- 0xAARRGGBB hex codes
+      -- css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+      -- tailwind = "false",
     },
     buftypes = {},
   }
