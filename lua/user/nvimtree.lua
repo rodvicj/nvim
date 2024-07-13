@@ -29,11 +29,12 @@ end
 
 function M.config()
   local wk = require "which-key"
-  wk.register {
-    ["<leader>e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
-    -- TODO: create nvimtree whichkey that is visible when using leader key
-    ["<S-tab>"] = { "<cmd>NvimTreeCollapse<cr> | <cmd>NvimTreeFocus<cr> | <cmd>buffer<cr>", "Collapse" },
+  wk.add {
+    { "<leader>e", "<cmd>NvimTreeToggle<CR>", desc = "Explorer" },
+  --   -- TODO: create nvimtree whichkey that is visible when using leader key
+    { "<S-tab>", "<cmd>NvimTreeCollapse<cr> | <cmd>NvimTreeFocus<cr> | <cmd>buffer<cr>" , desc = "Collapse" },
   }
+
 
   local icons = require "user.icons"
 

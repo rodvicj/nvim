@@ -2,9 +2,64 @@ local M = {}
 
 M = {
   "akinsho/bufferline.nvim",
-  dependencies = "nvim-tree/nvim-web-devicons",
+  -- dependencies = "nvim-tree/nvim-web-devicons",
   event = "VeryLazy",
 }
+
+M.keys = {
+  { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle Pin" },
+  { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete Non-Pinned Buffers" },
+  { "<leader>bo", "<Cmd>BufferLineCloseOthers<CR>", desc = "Delete Other Buffers" },
+  { "<leader>br", "<Cmd>BufferLineCloseRight<CR>", desc = "Delete Buffers to the Right" },
+  { "<leader>bl", "<Cmd>BufferLineCloseLeft<CR>", desc = "Delete Buffers to the Left" },
+  { "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
+  { "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
+  { "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
+  { "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
+  { "[B", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer prev" },
+  { "]B", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer next" },
+}
+
+local wk = require "which-key"
+wk.add {
+  { "<leader>1", "<Cmd>BufferLineGoToBuffer 1<CR>", hidden = true }, -- hide this keymap
+  { "<leader>2", "<Cmd>BufferLineGoToBuffer 2<CR>", hidden = true },
+  { "<leader>3", "<Cmd>BufferLineGoToBuffer 3<CR>", hidden = true },
+  { "<leader>4", "<Cmd>BufferLineGoToBuffer 4<CR>", hidden = true },
+  { "<leader>5", "<Cmd>BufferLineGoToBuffer 5<CR>", hidden = true },
+  { "<leader>6", "<Cmd>BufferLineGoToBuffer 6<CR>", hidden = true },
+  { "<leader>7", "<Cmd>BufferLineGoToBuffer 7<CR>", hidden = true },
+  { "<leader>8", "<Cmd>BufferLineGoToBuffer 8<CR>", hidden = true },
+  { "<leader>9", "<Cmd>BufferLineGoToBuffer 9<CR>", hidden = true },
+  { "<leader>0", "<Cmd>BufferLineGoToBuffer -1<CR>", hidden = true },
+}
+
+--     b = {
+--       name = "Buffers",
+--       j = { "<cmd>BufferLinePick<cr>", "Jump" },
+--       f = { "<cmd>Telescope buffers previewer=false<cr>", "Find" },
+--       b = { "<cmd>BufferLineCyclePrev<cr>", "Previous" },
+--       n = { "<cmd>BufferLineCycleNext<cr>", "Next" },
+--       W = { "<cmd>noautocmd w<cr>", "Save without formatting (noautocmd)" },
+--       -- w = { "<cmd>BufferWipeout<cr>", "Wipeout" }, -- TODO: implement this for bufferline
+--       e = {
+--         "<cmd>BufferLinePickClose<cr>",
+--         "Pick which buffer to close",
+--       },
+--       h = { "<cmd>BufferLineCloseLeft<cr>", "Close all to the left" },
+--       l = {
+--         "<cmd>BufferLineCloseRight<cr>",
+--         "Close all to the right",
+--       },
+--       D = {
+--         "<cmd>BufferLineSortByDirectory<cr>",
+--         "Sort by directory",
+--       },
+--       L = {
+--         "<cmd>BufferLineSortByExtension<cr>",
+--         "Sort by language",
+--       },
+--     },
 
 M.opts = {
   highlights = {
