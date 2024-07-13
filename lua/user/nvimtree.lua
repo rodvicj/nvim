@@ -4,6 +4,7 @@ vim.cmd [[:hi NvimTreeExecFile guifg=#9ece6a gui=bold ]]
 local M = {
   "nvim-tree/nvim-tree.lua",
   event = "VeryLazy",
+  dependencies = "nvim-tree/nvim-web-devicons",
 }
 
 function M.my_on_attach(bufnr)
@@ -31,10 +32,9 @@ function M.config()
   local wk = require "which-key"
   wk.add {
     { "<leader>e", "<cmd>NvimTreeToggle<CR>", desc = "Explorer" },
-  --   -- TODO: create nvimtree whichkey that is visible when using leader key
-    { "<S-tab>", "<cmd>NvimTreeCollapse<cr> | <cmd>NvimTreeFocus<cr> | <cmd>buffer<cr>" , desc = "Collapse" },
+    --   -- TODO: create nvimtree whichkey that is visible when using leader key
+    { "<S-tab>", "<cmd>NvimTreeCollapse<cr> | <cmd>NvimTreeFocus<cr> | <cmd>buffer<cr>", desc = "Collapse" },
   }
-
 
   local icons = require "user.icons"
 

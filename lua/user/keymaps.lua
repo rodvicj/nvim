@@ -43,9 +43,9 @@ vim.cmd [[:amenu 10.110 mousemenu.References <cmd>lua vim.lsp.buf.references()<C
 vim.keymap.set("n", "<RightMouse>", "<cmd>:popup mousemenu<CR>")
 vim.keymap.set("n", "<Tab>", "<cmd>:popup mousemenu<CR>")
 
--- bufferlinecycle
-vim.keymap.set("n", "<s-l>", "<cmd>:BufferLineCycleNext<CR>")
-vim.keymap.set("n", "<s-h>", "<cmd>:BufferLineCyclePrev<CR>")
+-- -- bufferlinecycle
+-- vim.keymap.set("n", "<s-l>", "<cmd>:BufferLineCycleNext<CR>")
+-- vim.keymap.set("n", "<s-h>", "<cmd>:BufferLineCyclePrev<CR>")
 
 -- alt-tab to find opened files
 vim.keymap.set("n", "<m-tab>", "<cmd>Telescope buffers<CR>")

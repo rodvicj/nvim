@@ -5,7 +5,6 @@ require "user.autocmds"
 require "user.commands"
 spec "user.colorscheme"
 -- spec "user.devicons"
-
 spec "user.mini-icons"
 spec "user.treesitter"
 spec "user.mason"
