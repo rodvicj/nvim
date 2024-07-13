@@ -3,6 +3,7 @@ require "user.options"
 require "user.keymaps"
 require "user.autocmds"
 require "user.commands"
+
 spec "user.colorscheme"
 -- spec "user.devicons"
 spec "user.mini-icons"
@@ -49,6 +50,3 @@ spec "user.extras.colorizer"
 -- spec "user.extras.hipatterns"
 
 require "user.lazy"
--- f + char == find next char
--- zfat - fold html tags
--- shift + S == replace line and go insert mode
