@@ -3,7 +3,6 @@ local M = {
   event = "VeryLazy",
 }
 
-
 function M.config()
   local rainbow_delimiters = require "rainbow-delimiters"
 
@@ -15,7 +14,7 @@ function M.config()
       [""] = "rainbow-delimiters",
       javascript = "rainbow-delimiters",
       tsx = "rainbow-parens",
-      xml = "rainbow-parens"
+      xml = "rainbow-parens",
     },
     highlight = {
       "rainbowcol1",
@@ -24,17 +23,16 @@ function M.config()
     },
     blacklist = { "html" },
   }
+
 end
 
 return M
-
 
 --  -- settings for my customized rainbow-delimiters
 -- local M = {
 --   "rodvicj/rainbow-delimiters.nvim",
 --   event = "VeryLazy",
 -- }
-
 
 -- function M.config()
 --   local rainbow_delimiters = require "rainbow-delimiters"

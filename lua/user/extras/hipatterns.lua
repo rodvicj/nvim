@@ -9,6 +9,81 @@
 
 -- return M
 
+local H = {}
+
+-- local hexChars = "0123456789abcdef"
+
+-- function H.hex_to_rgb(hex)
+--   hex = string.lower(hex)
+--   local ret = {}
+--   for i = 0, 2 do
+--     local char1 = string.sub(hex, i * 2 + 2, i * 2 + 2)
+--     local char2 = string.sub(hex, i * 2 + 3, i * 2 + 3)
+--     local digit1 = string.find(hexChars, char1) - 1
+--     local digit2 = string.find(hexChars, char2) - 1
+--     ret[i + 1] = (digit1 * 16 + digit2) / 255.0
+--   end
+--   return ret
+-- end
+
+function H.rgbToHex(red, green, blue)
+  -- Input validation (optional)
+  if red < 0 or red > 255 or green < 0 or green > 255 or blue < 0 or blue > 255 then
+    error "Invalid RGB values. Each value must be between 0 and 255."
+  end
+
+  -- Convert each RGB value to a 2-digit hexadecimal string
+  local hexRed = string.format("%02x", red)
+  local hexGreen = string.format("%02x", green)
+  local hexBlue = string.format("%02x", blue)
+
+  -- Combine the hexadecimal strings for the final color code
+  return "#" .. hexRed .. hexGreen .. hexBlue
+end
+
+-- -- Example usage
+-- local red = 255
+-- local green = 0
+-- local blue = 0
+
+-- local hexColor = rgbToHex(red, green, blue)
+
+-- print("RGB:", red, green, blue)
+-- print("Hex:", hexColor)  -- Output: RGB: 255 0 0, Hex: #FF0000
+
+function H.rgbaToHex(red, green, blue, alpha)
+  -- Input validation (optional)
+  if red < 0 or red > 255 or green < 0 or green > 255 or blue < 0 or blue > 255 then
+    error "Invalid RGB values. Each value must be between 0 and 255."
+  end
+
+  if alpha < 0 or alpha > 1 then
+    error "Invalid alpha value. Must be between 0 and 1."
+  end
+
+  -- Convert each RGB value to a 2-digit hexadecimal string
+  local hexRed = string.format("%02x", red)
+  local hexGreen = string.format("%02x", green)
+  local hexBlue = string.format("%02x", blue)
+
+  -- Convert alpha to a 2-digit hexadecimal string (multiply by 255 for 8-bit representation)
+  local alphaHex = string.format("%02x", math.floor(alpha * 255))
+
+  -- Combine the hexadecimal strings with "#" prefix
+  return "#" .. hexRed .. hexGreen .. hexBlue .. alphaHex
+end
+
+-- -- Example usage
+-- local red = 255
+-- local green = 0
+-- local blue = 0
+-- local alpha = 0.5  -- Transparency (0 for fully opaque, 1 for fully transparent)
+
+-- local hexColor = rgbaToHex(red, green, blue, alpha)
+
+-- print("RGBA:", red, green, blue, alpha)
+-- print("Hex:", hexColor)  -- Output: RGBA: 255 0 0 0.5, Hex: #FF000080
+
 local M = {}
 
 ---@type table<string,true>
@@ -20,7 +95,7 @@ M.plugin = {
   desc = "Highlight colors in your code. Also includes Tailwind CSS support.",
   -- event = "LazyFile",
   opts = function()
-    local hi = require("mini.hipatterns")
+    local hi = require "mini.hipatterns"
     return {
       -- custom LazyVim option to enable the tailwind integration
       tailwind = {
@@ -43,8 +118,57 @@ M.plugin = {
         -- compact: only the color will be highlighted
         style = "full",
       },
+
       highlighters = {
-        hex_color = hi.gen_highlighter.hex_color({ priority = 2000 }),
+
+        -- hsl_color = {
+        --   pattern = "hsl%(%d+,? %d+%%?,? %d+%%?%)",
+        --   group = function(_, match)
+        --     local utils = require "solarized-osaka.hsl"
+        --     --- @type string, string, string
+        --     local nh, ns, nl = match:match "hsl%((%d+),? (%d+)%%?,? (%d+)%%?%)"
+        --     --- @type number?, number?, number?
+        --     local h, s, l = tonumber(nh), tonumber(ns), tonumber(nl)
+        --     --- @type string
+        --     local hex_color = utils.hslToHex(h, s, l)
+        --     return MiniHipatterns.compute_hex_color_group(hex_color, "bg")
+        --   end,
+        -- },
+
+        -- -- from craftzdog
+
+        rgb_color = {
+          pattern = "rgb%(%d+,? %d+,? %d+%)",
+          group = function(_, match)
+            local utils = require "solarized-osaka.hsl"
+            --- @type string, string, string
+            local nh, ns, nl = match:match "rgb%((%d+),? (%d+),? (%d+)%)"
+            --- @type number?, number?, number?
+            local h, s, l = tonumber(nh), tonumber(ns), tonumber(nl)
+            --- @type string
+            local hex_color = H.rgbToHex(h, s, l)
+            return MiniHipatterns.compute_hex_color_group(hex_color, "bg")
+          end,
+        },
+
+        rgba_color = {
+          -- pattern = "rgba?%(%d+,? %d+,? %d+,? ([%d.]+)?%)",
+          pattern = "rgba%(%d+,? %d+,? %d+,? %d+%)",
+          group = function(_, match)
+            --- @type string, string, string, string
+            -- local nr, ng, nb, na = match:match "rgba%((%d+),? (%d+),? (%d+),? (%d+)% ([%d.]+)?%)"
+            local nr, ng, nb, na = match:match "rgba%((%d+),? (%d+),? (%d+),? (%d+)%)"
+            --- @type number?, number?, number?, number?
+            local r, g, b, a = tonumber(nr), tonumber(ng), tonumber(nb), tonumber(na)
+            --- @type string
+            -- TODO: refactor rgba function
+            local hex_color = H.rgbaToHex(r, g, b, 0)
+            -- local hex_color = H.rgbToHex(r, g, b)
+            return MiniHipatterns.compute_hex_color_group(hex_color, "bg")
+          end,
+        },
+
+        hex_color = hi.gen_highlighter.hex_color { priority = 2000 },
         shorthand = {
           pattern = "()#%x%x%x()%f[^%x%w]",
           group = function(_, _, data)
@@ -83,7 +207,7 @@ M.plugin = {
           ---@type string
           local match = m.full_match
           ---@type string, number
-          local color, shade = match:match("[%w-]+%-([a-z%-]+)%-(%d+)")
+          local color, shade = match:match "[%w-]+%-([a-z%-]+)%-(%d+)"
           shade = tonumber(shade)
           local bg = vim.tbl_get(M.colors, color, shade)
           if bg then

@@ -48,5 +48,7 @@ spec "user.extras.hex"
 spec "user.extras.zen"
 spec "user.extras.colorizer"
 -- spec "user.extras.hipatterns"
+-- spec "user.extras.solarized-osaka"
+
 
 require "user.lazy"
