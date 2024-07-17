@@ -46,9 +46,8 @@ spec "user.extras.markdown-preview"
 spec "user.extras.oil"
 spec "user.extras.hex"
 spec "user.extras.zen"
-spec "user.extras.colorizer"
--- spec "user.extras.hipatterns"
--- spec "user.extras.solarized-osaka"
+-- spec "user.extras.colorizer"
+spec "user.extras.hipatterns"
 
 
 require "user.lazy"

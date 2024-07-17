@@ -62,7 +62,7 @@ function M.config()
     view = {
       adaptive_size = false,
       centralize_selection = true,
-      width = 27,
+      width = 28,
       side = "left",
       preserve_window_proportions = false,
       number = false,
@@ -88,7 +88,7 @@ function M.config()
       full_name = false,
       highlight_opened_files = "none",
       root_folder_label = ":t",
-      indent_width = 2,
+      indent_width = 0,
       indent_markers = {
         enable = false,
         inline_arrows = true,

@@ -1,88 +1,112 @@
--- local M = {
---   "echasnovski/mini.nvim",
---   version = false,
--- }
+local bit = require "bit"
+local lshift, bor, tohex = bit.lshift, bit.bor, bit.tohex
+local floor = math.floor
 
--- function M.config()
---   require("mini.hipatterns").setup()
--- end
-
--- return M
-
-local H = {}
-
--- local hexChars = "0123456789abcdef"
-
--- function H.hex_to_rgb(hex)
---   hex = string.lower(hex)
---   local ret = {}
---   for i = 0, 2 do
---     local char1 = string.sub(hex, i * 2 + 2, i * 2 + 2)
---     local char2 = string.sub(hex, i * 2 + 3, i * 2 + 3)
---     local digit1 = string.find(hexChars, char1) - 1
---     local digit2 = string.find(hexChars, char2) - 1
---     ret[i + 1] = (digit1 * 16 + digit2) / 255.0
+-- local function percent_h(v)
+--   if v:sub(-1, -1) == "%" then
+--     return tonumber(v:sub(1, -2))
 --   end
---   return ret
+
+--   local x = tonumber(v)
+--   if x > 360 then
+--     return nil
+--   end
+--   return x
 -- end
 
-function H.rgbToHex(red, green, blue)
-  -- Input validation (optional)
-  if red < 0 or red > 255 or green < 0 or green > 255 or blue < 0 or blue > 255 then
-    error "Invalid RGB values. Each value must be between 0 and 255."
+local function percent_hsl(v)
+  if v:sub(-1, -1) == "%" then
+    -- return tonumber(v:sub(1, -2)) / 100 * 100
+    local color = tonumber(v:sub(1, -2)) / 100 * 100
+
+    if color > 100 then
+      print("Invalid percentage value, change " .. v .. " to valid values (0 <= percentage <= 100)")
+      return 100
+    end
+    return color
+  else
+    print("Invalid value, change " .. v .. " to " .. v .. "%")
+    return nil
   end
-
-  -- Convert each RGB value to a 2-digit hexadecimal string
-  local hexRed = string.format("%02x", red)
-  local hexGreen = string.format("%02x", green)
-  local hexBlue = string.format("%02x", blue)
-
-  -- Combine the hexadecimal strings for the final color code
-  return "#" .. hexRed .. hexGreen .. hexBlue
 end
 
--- -- Example usage
--- local red = 255
--- local green = 0
--- local blue = 0
+local function percent_rgb(v)
+  if v:sub(-1, -1) == "%" then
+    -- return tonumber(v:sub(1, -2)) / 100 * 255
+    local color = tonumber(v:sub(1, -2)) / 100 * 255
+    if color > 255 then
+      print("Invalid percentage value, change " .. v .. " to valid values (0 <= percentage <= 100)")
+      return 255
+    end
 
--- local hexColor = rgbToHex(red, green, blue)
-
--- print("RGB:", red, green, blue)
--- print("Hex:", hexColor)  -- Output: RGB: 255 0 0, Hex: #FF0000
-
-function H.rgbaToHex(red, green, blue, alpha)
-  -- Input validation (optional)
-  if red < 0 or red > 255 or green < 0 or green > 255 or blue < 0 or blue > 255 then
-    error "Invalid RGB values. Each value must be between 0 and 255."
+    return color
   end
-
-  if alpha < 0 or alpha > 1 then
-    error "Invalid alpha value. Must be between 0 and 1."
+  local x = tonumber(v)
+  if x > 255 then
+    print("Invalid value, change " .. x .. " to valid values (0 <= RGB <= 255)")
+    return 255
   end
-
-  -- Convert each RGB value to a 2-digit hexadecimal string
-  local hexRed = string.format("%02x", red)
-  local hexGreen = string.format("%02x", green)
-  local hexBlue = string.format("%02x", blue)
-
-  -- Convert alpha to a 2-digit hexadecimal string (multiply by 255 for 8-bit representation)
-  local alphaHex = string.format("%02x", math.floor(alpha * 255))
-
-  -- Combine the hexadecimal strings with "#" prefix
-  return "#" .. hexRed .. hexGreen .. hexBlue .. alphaHex
+  return x
 end
 
--- -- Example usage
--- local red = 255
--- local green = 0
--- local blue = 0
--- local alpha = 0.5  -- Transparency (0 for fully opaque, 1 for fully transparent)
+local function alpha(a)
+  if a:sub(-1, -1) == "%" then
+    return tonumber(a:sub(1, -2)) / 100
+  end
+  local x = tonumber(a)
+  if x > 1 then
+    print("Invalid value, change " .. x .. " to valid values (0 <= alpha <= 1)")
+    return 1
+  end
+  return x
+end
 
--- local hexColor = rgbaToHex(red, green, blue, alpha)
+local function hue2rgb(p, q, t)
+  if t < 0 then
+    t = t + 1
+  end
+  if t > 1 then
+    t = t - 1
+  end
+  if t < 1 / 6 then
+    return p + (q - p) * 6 * t
+  end
+  if t < 1 / 2 then
+    return q
+  end
+  if t < 2 / 3 then
+    return p + (q - p) * (2 / 3 - t) * 6
+  end
+  return p
+end
 
--- print("RGBA:", red, green, blue, alpha)
--- print("Hex:", hexColor)  -- Output: RGBA: 255 0 0 0.5, Hex: #FF000080
+local function hslToRgb(h, s, l)
+  local r, g, b
+
+  if s == 0 then
+    r, g, b = l, l, l -- achromatic
+  else
+    local q
+    if l < 0.5 then
+      q = l * (1 + s)
+    else
+      q = l + s - l * s
+    end
+    local p = 2 * l - q
+
+    r = hue2rgb(p, q, h + 1 / 3)
+    g = hue2rgb(p, q, h)
+    b = hue2rgb(p, q, h - 1 / 3)
+  end
+
+  return r * 255, g * 255, b * 255
+end
+
+local function hslToHex(h, s, l)
+  local r, g, b = hslToRgb(h / 360, s / 100, l / 100)
+
+  return string.format("#%02x%02x%02x", r, g, b)
+end
 
 local M = {}
 
@@ -121,49 +145,121 @@ M.plugin = {
 
       highlighters = {
 
-        -- hsl_color = {
-        --   pattern = "hsl%(%d+,? %d+%%?,? %d+%%?%)",
-        --   group = function(_, match)
-        --     local utils = require "solarized-osaka.hsl"
-        --     --- @type string, string, string
-        --     local nh, ns, nl = match:match "hsl%((%d+),? (%d+)%%?,? (%d+)%%?%)"
-        --     --- @type number?, number?, number?
-        --     local h, s, l = tonumber(nh), tonumber(ns), tonumber(nl)
-        --     --- @type string
-        --     local hex_color = utils.hslToHex(h, s, l)
-        --     return MiniHipatterns.compute_hex_color_group(hex_color, "bg")
-        --   end,
-        -- },
-
-        -- -- from craftzdog
-
         rgb_color = {
-          pattern = "rgb%(%d+,? %d+,? %d+%)",
+          -- pattern = "rgb%(%d+,? %d+,? %d+%)",
+          -- local nr, ng, nb = match:match "rgb%((%d+),? (%d+),? (%d+)%)"
+          pattern = "rgb%(%d+%%?,? %d+%%?,? %d+%%?%)",
           group = function(_, match)
-            local utils = require "solarized-osaka.hsl"
             --- @type string, string, string
-            local nh, ns, nl = match:match "rgb%((%d+),? (%d+),? (%d+)%)"
-            --- @type number?, number?, number?
-            local h, s, l = tonumber(nh), tonumber(ns), tonumber(nl)
-            --- @type string
-            local hex_color = H.rgbToHex(h, s, l)
+            local nr, ng, nb = match:match "rgb%((%d+%%?),? (%d+%%?),? (%d+%%?)%)"
+            local r = percent_rgb(nr)
+            if not r or r > 255 then
+              return
+            end
+            local g = percent_rgb(ng)
+            if not g or g > 255 then
+              return
+            end
+            local b = percent_rgb(nb)
+            if not b or b > 255 then
+              return
+            end
+            local hex_color = "#" .. tohex(bor(lshift(r, 16), lshift(g, 8), b), 6)
             return MiniHipatterns.compute_hex_color_group(hex_color, "bg")
           end,
         },
 
         rgba_color = {
-          -- pattern = "rgba?%(%d+,? %d+,? %d+,? ([%d.]+)?%)",
-          pattern = "rgba%(%d+,? %d+,? %d+,? %d+%)",
+          -- -- this commented pattern doesn't support percentage
+          -- pattern = "rgba%(%d+,? %d+,? %d+,? [.%d]+%)",
+          -- local nr, ng, nb, na = match:match "rgba%((%d+),? (%d+),? (%d+),? ([.%d]+)%)"
+          -- - @type number?, number?, number?
+          -- local r, g, b, a = tonumber(nr), tonumber(ng), tonumber(nb), tonumber(na)
+          -- this supports percentage
+          pattern = "rgba%(%d+%%?,? %d+%%?,? %d+%%?,? [.%d]+%%?%)",
+          group = function(_, match)
+            --- @type string, string, string
+            local nr, ng, nb, na = match:match "rgba%((%d+%%?),? (%d+%%?),? (%d+%%?),? ([.%d]+%%?)%)"
+            na = alpha(na)
+            local a = tonumber(na)
+            if not a or a > 1 then
+              return
+            end
+            local r = percent_rgb(nr)
+            if not r or r > 255 then
+              return
+            end
+            local g = percent_rgb(ng)
+            if not g or g > 255 then
+              return
+            end
+            local b = percent_rgb(nb)
+            if not b or b > 255 then
+              return
+            end
+
+            ---@type string
+            local hex_color = "#" .. tohex(bor(lshift(floor(r * a), 16), lshift(floor(g * a), 8), floor(b * a)), 6)
+            -- local hex_color = "#" .. hex
+            return MiniHipatterns.compute_hex_color_group(hex_color, "bg")
+          end,
+        },
+
+        hsl_color = {
+          pattern = "hsl%(%d+,? %d+%%?,? %d+%%?%)",
+          group = function(_, match)
+            --- @type string, string, string
+            local nh, ns, nl = match:match "hsl%((%d+),? (%d+%%?),? (%d+%%?)%)"
+            local h = tonumber(nh)
+            if not h or h > 360 then
+              print("Invalid value, change " .. h .. " to valid values (0 <= hue <= 360)")
+            end
+            local s = percent_hsl(ns)
+            local l = percent_hsl(nl)
+            if h == nil or s == nil or l == nil then
+              return
+            end
+            if s > 100 then
+              return
+            end
+            if l > 100 then
+              return
+            end
+            local hex_color = hslToHex(h, s, l)
+            return MiniHipatterns.compute_hex_color_group(hex_color, "bg")
+          end,
+        },
+
+        hsla_color = {
+          pattern = "hsla%(%d+,? %d+%%?,? %d+%%?,? [.%d]+%%?%)",
           group = function(_, match)
             --- @type string, string, string, string
-            -- local nr, ng, nb, na = match:match "rgba%((%d+),? (%d+),? (%d+),? (%d+)% ([%d.]+)?%)"
-            local nr, ng, nb, na = match:match "rgba%((%d+),? (%d+),? (%d+),? (%d+)%)"
-            --- @type number?, number?, number?, number?
-            local r, g, b, a = tonumber(nr), tonumber(ng), tonumber(nb), tonumber(na)
-            --- @type string
-            -- TODO: refactor rgba function
-            local hex_color = H.rgbaToHex(r, g, b, 0)
-            -- local hex_color = H.rgbToHex(r, g, b)
+            local nh, ns, nl, na = match:match "hsla%((%d+),? (%d+%%?),? (%d+%%?),? ([.%d]+%%?)%)"
+
+            --- @type number
+            local a = alpha(na)
+            if not a or a > 1 then
+              return
+            end
+            local h = tonumber(nh)
+            if not h or h > 360 then
+              print("Invalid value, change " .. h .. " to valid values (0 <= hue <= 360)")
+            end
+            local s = percent_hsl(ns)
+            local l = percent_hsl(nl)
+
+            if h == nil or s == nil or l == nil then
+              return
+            end
+
+            if s > 100 then
+              return
+            end
+            if l > 100 then
+              return
+            end
+            local r, g, b = hslToRgb(h / 360, s / 100, l / 100)
+            local hex_color = "#" .. tohex(bor(lshift(floor(r * a), 16), lshift(floor(g * a), 8), floor(b * a)), 6)
             return MiniHipatterns.compute_hex_color_group(hex_color, "bg")
           end,
         },
