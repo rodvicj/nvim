@@ -1,18 +1,11 @@
+-- NOTE: codes from these files
+-- https://github.com/NvChad/nvim-colorizer.lua/blob/master/lua/colorizer.lua
+-- https://github.com/craftzdog/solarized-osaka.nvim/blob/main/lua/solarized-osaka/hsl.lua
+-- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/extras/util/mini-hipatterns.lua
+
 local bit = require "bit"
 local lshift, bor, tohex = bit.lshift, bit.bor, bit.tohex
 local floor = math.floor
-
--- local function percent_h(v)
---   if v:sub(-1, -1) == "%" then
---     return tonumber(v:sub(1, -2))
---   end
-
---   local x = tonumber(v)
---   if x > 360 then
---     return nil
---   end
---   return x
--- end
 
 local function percent_hsl(v)
   if v:sub(-1, -1) == "%" then
