@@ -5,6 +5,20 @@ local M = {
 
 M.opts_extend = { "spec" }
 
+  -- wk.add {
+  --   mode = { "n", "v" },
+  --   -- { "<leader><tab>", group = "tabs" },
+  --   { "<leader>a", group = "Tab", mode = "n", "v" },
+  --   { "<leader>b", group = "Buffers", mode = "n", "v" },
+  --   { "<leader>d", group = "Debug", mode = "n", "v" },
+  --   { "<leader>f", group = "Find", mode = "n", "v" },
+  --   { "<leader>g", group = "Git", mode = "n", "v" },
+  --   { "<leader>l", group = "LSP", mode = "n", "v" },
+  --   { "<leader>p", group = "Plugins", mode = "n", "v" },
+  --   { "<leader>t", group = "Test", mode = "n", "v" },
+  --   { "<leader>T", group = "Treesitter", mode = "n", "v" },
+  -- }
+
 M.opts = {
   spec = {
     {
@@ -67,6 +81,14 @@ M.opts = {
   },
 }
 M.keys = {
+  { "<leader>b", group = "Buffers" },
+  { "<leader>d", group = "Debug" },
+  { "<leader>f", group = "Find" },
+  { "<leader>g", group = "Git" },
+  { "<leader>l", group = "LSP" },
+  { "<leader>p", group = "Plugins" },
+  { "<leader>t", group = "Test" },
+  { "<leader>T", group = "Treesitter" },
   { "<leader>z", "<cmd>ZenMode<cr>", desc = "Zen mode" },
   { "<leader>c", "<cmd>BufferKill<CR>", desc = "Close Buffer" },
   { "<leader>w", "<cmd>w!<CR>", desc = "Save" },

@@ -36,20 +36,6 @@ function M.config()
     { "<S-tab>", "<cmd>NvimTreeCollapse<cr> | <cmd>NvimTreeFocus<cr> | <cmd>buffer<cr>", desc = "Collapse" },
   }
 
-  wk.add {
-    mode = { "n", "v" },
-    -- { "<leader><tab>", group = "tabs" },
-    { "<leader>a", group = "Tab", mode = "n", "v" },
-    { "<leader>b", group = "Buffers", mode = "n", "v" },
-    { "<leader>d", group = "Debug", mode = "n", "v" },
-    { "<leader>f", group = "Find", mode = "n", "v" },
-    { "<leader>g", group = "Git", mode = "n", "v" },
-    { "<leader>l", group = "LSP", mode = "n", "v" },
-    { "<leader>p", group = "Plugins", mode = "n", "v" },
-    { "<leader>t", group = "Test", mode = "n", "v" },
-    { "<leader>T", group = "Treesitter", mode = "n", "v" },
-  }
-
   local icons = require "user.icons"
 
   require("nvim-tree").setup {
