@@ -5,7 +5,6 @@ require "user.autocmds"
 require "user.commands"
 
 spec "user.colorscheme"
--- spec "user.devicons"
 spec "user.mini-icons"
 spec "user.treesitter"
 spec "user.mason"
@@ -45,7 +44,6 @@ spec "user.extras.markdown-preview"
 spec "user.extras.oil"
 spec "user.extras.hex"
 spec "user.extras.zen"
--- spec "user.extras.colorizer"
 spec "user.extras.hipatterns"
 
 

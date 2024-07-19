@@ -38,6 +38,7 @@ function M.config()
   t["zt"] = { "zt", { "250" } }
   t["zz"] = { "zz", { "250" } }
   t["zb"] = { "zb", { "250" } }
+  -- TODO: use whichkey add as hidden
 
   require("neoscroll.config").set_mappings(t)
 end
