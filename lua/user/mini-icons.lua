@@ -1,6 +1,6 @@
 local M = {
   "echasnovski/mini.icons",
-  -- event = "VeryLazy",
+  priority = 60, -- make sure to load this before all the other start plugins
 }
 
 function M.config()
