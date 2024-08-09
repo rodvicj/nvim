@@ -47,6 +47,7 @@ function M.config()
   require("luasnip/loaders/from_vscode").lazy_load()
   require("luasnip").filetype_extend("typescriptreact", { "html" })
   require("luasnip").filetype_extend("javascriptreact", { "html" })
+  require("luasnip").filetype_extend("htmldjango", { "html" })
 
   vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
   vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })

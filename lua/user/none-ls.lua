@@ -22,7 +22,7 @@ function M.config()
       formatting.prettier,
       -- formatting.prettier.with {
       --   -- extra_filetypes = { "toml" },
-      --   filetypes = { "javascript" },
+      --   filetypes = { "javascript", "html" },
       --   -- extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
       -- },
       formatting.black,

@@ -7,3 +7,8 @@
 <!-- -- f + char == find next char -->
 <!-- -- zfat - fold html tags -->
 <!-- -- shift + S == replace line and go insert mode -->
+<!-- -- f + space == find next space -->
+
+
+<!-- CHROME: Element Picker Mode -->
+<!-- ctrl + shft  c  -->

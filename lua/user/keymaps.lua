@@ -35,6 +35,7 @@ keymap("v", "J", ":move '>+1<CR>gv-gv", opts)
 
 -- nmap ,P "0P
 keymap("n", "P", [["0p]])
+keymap("v", "P", [["0p]])
 keymap("x", "p", [["_dP]])
 
 vim.cmd [[:amenu 10.100 mousemenu.Goto\ Definition <cmd>lua vim.lsp.buf.definition()<CR>]]
