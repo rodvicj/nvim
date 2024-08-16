@@ -26,7 +26,7 @@ function M.config()
       -- names = false,
       -- RGB = false, -- #RGB hex codes
       -- RRGGBB = false, -- #RRGGBB hex codes
-      -- RRGGBBAA = false, -- #RRGGBBAA hex codes
+      RRGGBBAA = true, -- #RRGGBBAA hex codes
       -- AARRGGBB = false, -- 0xAARRGGBB hex codes
       -- css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
       -- tailwind = "false",

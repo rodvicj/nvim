@@ -12,3 +12,5 @@
 
 <!-- CHROME: Element Picker Mode -->
 <!-- ctrl + shft  c  -->
+
+<!-- it's you against you -->

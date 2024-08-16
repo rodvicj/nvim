@@ -45,5 +45,6 @@ spec "user.extras.oil"
 spec "user.extras.hex"
 spec "user.extras.zen"
 spec "user.extras.hipatterns"
+-- spec "user.extras.colorizer"
 
 require "user.lazy"

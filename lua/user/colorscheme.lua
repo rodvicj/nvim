@@ -18,11 +18,18 @@ function M.config()
 
       -- default for CursorLine { fg = c.orange, bold = true }
       hl.CursorLineNr = { fg = c.dark5, bold = false }
+
+      -- IndentBlanklineChar        = { fg = c.fg_gutter, nocombine = true },
+      -- IndentBlanklineContextChar = { fg = c.blue1, nocombine = true },
+      -- IblIndent                  = { fg = c.fg_gutter, nocombine = true },
+      -- IblScope                   = { fg = c.blue1, nocombine = true },
+
+      -- hl.IblIndent = { fg = c.fg_gutter, nocombine = true }
+      hl.IblScope = { fg = "#565f89", nocombine = true }
     end,
   }
 
   vim.cmd.colorscheme "tokyonight-storm"
-  -- vim.cmd.colorscheme "onedarker"
 end
 
 return M

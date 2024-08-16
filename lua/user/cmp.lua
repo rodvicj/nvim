@@ -32,7 +32,7 @@ local M = {
       event = "InsertEnter",
       dependencies = {
         "rafamadriz/friendly-snippets",
-        commit = "7278f9d9aeee0e2befcb8a5b1a25c65bd54396aa",
+        -- commit = "7278f9d9aeee0e2befcb8a5b1a25c65bd54396aa",
       },
     },
     {
@@ -184,6 +184,32 @@ function M.config()
     sources = {
       { name = "vim-dadbod-completion" },
       { name = "buffer" },
+    },
+  })
+
+
+  -- NOTE: only use lsp auto-complete in css to avoid polluted auto-completion provided by cmp;
+  cmp.setup.filetype({ "css", "scss" }, {
+    sources = {
+      {
+        name = "nvim_lsp",
+        entry_filter = function(entry, ctx)
+          local kind = require("cmp.types.lsp").CompletionItemKind[entry:get_kind()]
+
+          if kind == "Text" then
+            return false
+          end
+
+          return true
+        end,
+      },
+      -- { name = "luasnip" },
+      -- { name = "cmp_tabnine" },
+      -- { name = "nvim_lua" },
+      -- { name = "buffer" },
+      -- { name = "path" },
+      -- { name = "calc" },
+      -- { name = "emoji" },
     },
   })
 end
