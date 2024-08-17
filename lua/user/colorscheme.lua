@@ -25,7 +25,8 @@ function M.config()
       -- IblScope                   = { fg = c.blue1, nocombine = true },
 
       -- hl.IblIndent = { fg = c.fg_gutter, nocombine = true }
-      hl.IblScope = { fg = "#565f89", nocombine = true }
+      -- c.comment == "#565f89"
+      hl.IblScope = { fg = c.comment, nocombine = true }
     end,
   }
 
