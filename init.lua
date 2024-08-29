@@ -45,7 +45,6 @@ spec "user.extras.oil"
 spec "user.extras.hex"
 spec "user.extras.zen"
 spec "user.extras.hipatterns"
--- spec "user.extras.scrollbar"
 spec "user.extras.scrollview"
 -- spec "user.extras.colorizer"
 

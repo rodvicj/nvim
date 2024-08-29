@@ -12,5 +12,6 @@
 
 <!-- CHROME: Element Picker Mode -->
 <!-- ctrl + shft  c  -->
+<!-- :delmarks z -->
 
 <!-- it's you against you -->
