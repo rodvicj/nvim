@@ -17,7 +17,7 @@ function M.config()
       color = "#4f4f4f",
       cterm = nil,
       -- highlight = "CursorColumn",
-      hide_if_all_visible = false, -- Hides handle if all lines are visible
+      hide_if_all_visible = true, -- Hides handle if all lines are visible
     },
     marks = {
       Cursor = {
