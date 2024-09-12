@@ -1,11 +1,51 @@
 local M = {
   "petertriho/nvim-scrollbar",
   event = "VeryLazy",
+  dependencies = {
+    "kevinhwang91/nvim-hlslens",
+  },
 }
 
-local colors = require("tokyonight.colors").setup()
+--     set_keymap( "n", "n", "<CMD>execute('normal! ' . v:count1 . 'n')<CR><CMD>lua require('hlslens').start()<CR>", opts)
+--     set_keymap( "n", "N", "<CMD>execute('normal! ' . v:count1 . 'N')<CR><CMD>lua require('hlslens').start()<CR>", opts)
+--     set_keymap("n", "*", "*<CMD>lua require('hlslens').start()<CR>", opts)
+--     set_keymap("n", "#", "#<CMD>lua require('hlslens').start()<CR>", opts)
+--     set_keymap("n", "g*", "g*<CMD>lua require('hlslens').start()<CR>", opts)
+--     set_keymap("n", "g#", "g#<CMD>lua require('hlslens').start()<CR>", opts)
+
+-- vim.keymap.set("n", "<C-t>", api.tree.change_root_to_parent, opts "Up"),
+
+local opts = { noremap = true, silent = true }
+vim.keymap.set("n", "n", "<CMD>execute('normal! ' . v:count1 . 'N')<CR><CMD>lua require('hlslens').start()<CR>", opts)
+vim.keymap.set("n", "N", "<CMD>execute('normal! ' . v:count1 . 'n')<CR><CMD>lua require('hlslens').start()<CR>", opts)
+vim.keymap.set("n", "#", "#<CMD>lua require('hlslens').start()<CR>", opts)
 
 function M.config()
+
+  require("scrollbar.handlers.search").setup {
+    override_lens = function() end,
+  }
+  --   require("hlslens").setup {
+  --     auto_enable = true,
+  --     enable_incsearch = {
+  --       default = true,
+  --     },
+  --     calm_down = {
+  --       default = false,
+  --     },
+  --     nearest_only = {
+  --       default = false,
+  --     },
+  --     nearest_float_when = {
+  --       default = "auto",
+  --     },
+  --     float_shadow_blend = 50,
+  --     virt_priority = 100,
+  --     override_lens = {
+  --       default = nil,
+  --     },
+  --   }
+
   require("scrollbar").setup {
     show = true,
     show_in_active_only = true,
@@ -29,10 +69,12 @@ function M.config()
         -- highlight = "Normal",
       },
       Search = {
-        text = { "-", "=" },
+        -- text = { "-", "=" },
+        text = { "=" },
         priority = 1,
-        color = nil,
-        cterm = nil,
+        -- color = nil,
+        color = "#565f89",
+        -- cterm = nil,
         highlight = "Search",
       },
       Error = {
@@ -126,9 +168,10 @@ function M.config()
       diagnostic = false,
       gitsigns = false, -- Requires gitsigns
       handle = true,
-      search = false, -- Requires hlslens
+      search = true, -- Requires hlslens
     },
   }
+
 end
 
 return M

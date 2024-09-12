@@ -1,6 +1,5 @@
 local M = {
   "neovim/nvim-lspconfig",
-  -- commit = "15a93b34dbd50dd50d06410eb52c9603ad26a7a5",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     {
@@ -123,7 +122,7 @@ function M.config()
     "eslint",
     "gopls",
     "tailwindcss",
-    -- "tsserver",
+    -- "ts_ls",
   }
 
   local default_diagnostic_config = {

@@ -155,7 +155,7 @@ function M.config()
       { name = "luasnip" },
       { name = "cmp_tabnine" },
       { name = "nvim_lua" },
-      -- { name = "buffer" },
+      { name = "buffer" },
       { name = "path" },
       { name = "calc" },
       -- { name = "emoji" },
