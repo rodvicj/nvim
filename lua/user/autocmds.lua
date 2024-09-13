@@ -105,3 +105,25 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
   end,
   group = "Persistent_Folds",
 })
+
+-- -- local general = vim.api.nvim_create_augroup("General", { clear = true })
+-- local opts = { noremap = true, silent = true }
+-- vim.api.nvim_create_augroup("General", { clear = true })
+-- vim.api.nvim_create_autocmd("ModeChanged", {
+--   callback = function()
+--     -- if vim.fn.getcmdtype() == "?" or vim.fn.getcmdtype() == "/" then
+--     if vim.fn.getcmdtype() == "?" or vim.fn.getcmdtype() == "/" then
+--       print("triggered / ?")
+--       vim.keymap.set("n", "n", "<CMD>execute('normal! ' . v:count1 . 'n')<CR><CMD>lua require('hlslens').start()<CR>", opts)
+--       vim.keymap.set("n", "N", "<CMD>execute('normal! ' . v:count1 . 'N')<CR><CMD>lua require('hlslens').start()<CR>", opts)
+--       -- vim.opt.hlsearch = true
+--     else
+--       print("not search")
+--       -- vim.opt.hlsearch = false
+--       -- vim.keymap.set("n", "n", "<CMD>execute('normal! ' . v:count1 . 'N')<CR><CMD>lua require('hlslens').start()<CR>", opts)
+--       -- vim.keymap.set("n", "N", "<CMD>execute('normal! ' . v:count1 . 'n')<CR><CMD>lua require('hlslens').start()<CR>", opts)
+--     end
+--   end,
+--   -- group = general,
+--   group = "General",
+-- })
