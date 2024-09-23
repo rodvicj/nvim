@@ -21,9 +21,13 @@ function M.config()
 
       -- WARNING: check what this highlights corresponds to;
       hl["@attribute.builtin"] = { fg = "#ff0000", bold = true }
-
       -- hl["@tag.delimiter.tsx"] = { fg = Util.blend_bg(c.blue, 0.7) }
       hl["@tag.delimiter"] = { fg = Util.blend_bg(c.blue, 0.7) }
+
+      -- -- hardcoded
+      -- hl["@tag.delimiter"] = { fg = "#607dbf" }
+      -- -- use to get hl["@tag.delimiter"] hex color
+      -- print("@tag.delimiter", Util.blend_bg(c.blue, 0.7))
 
       --prevent unnecessary highlight in top winbar when splitting view
       hl.WinBar = { link = "none" }
