@@ -1,6 +1,8 @@
 local M = {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
+
+  event = "VeryLazy",
   dependencies = {
     {
       "hrsh7th/cmp-nvim-lsp",
@@ -139,7 +141,7 @@ function M.config()
       end,
     },
     sources = {
-      { name = "copilot" },
+      -- { name = "copilot" },
       {
         name = "nvim_lsp",
         entry_filter = function(entry, ctx)
@@ -152,12 +154,12 @@ function M.config()
           return true
         end,
       },
-      { name = "luasnip" },
-      { name = "cmp_tabnine" },
-      { name = "nvim_lua" },
       { name = "buffer" },
-      { name = "path" },
-      { name = "calc" },
+      -- { name = "luasnip" },
+      -- { name = "cmp_tabnine" },
+      -- { name = "nvim_lua" },
+      -- { name = "path" },
+      -- { name = "calc" },
       -- { name = "emoji" },
     },
     confirm_opts = {

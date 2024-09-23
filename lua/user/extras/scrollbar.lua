@@ -16,9 +16,12 @@ local M = {
 -- vim.keymap.set("n", "<C-t>", api.tree.change_root_to_parent, opts "Up"),
 
 local opts = { noremap = true, silent = true }
--- vim.keymap.set("n", "n", "<CMD>execute('normal! ' . v:count1 . 'N')<CR><CMD>lua require('hlslens').start()<CR>", opts)
--- vim.keymap.set("n", "N", "<CMD>execute('normal! ' . v:count1 . 'n')<CR><CMD>lua require('hlslens').start()<CR>", opts)
+vim.keymap.set("n", "n", "<CMD>execute('normal! ' . v:count1 . 'n')<CR><CMD>lua require('hlslens').start()<CR>", opts)
+vim.keymap.set("n", "N", "<CMD>execute('normal! ' . v:count1 . 'N')<CR><CMD>lua require('hlslens').start()<CR>", opts)
 vim.keymap.set("n", "#", "#<CMD>lua require('hlslens').start()<CR>", opts)
+
+local colors = require("tokyonight.colors").setup()
+
 
 function M.config()
   require("scrollbar.handlers.search").setup {
@@ -43,7 +46,8 @@ function M.config()
         -- text = "•",
         text = "─",
         priority = 0,
-        color = "#7f7f7f",
+        -- color = "#7f7f7f",
+        color = colors.orange,
         cterm = nil,
         -- highlight = "Normal",
       },
@@ -52,7 +56,8 @@ function M.config()
         text = { "=" },
         priority = 1,
         -- color = nil,
-        color = "#565f89",
+        color = colors.orange,
+        -- color = "#565f89",
         -- cterm = nil,
         highlight = "Search",
       },

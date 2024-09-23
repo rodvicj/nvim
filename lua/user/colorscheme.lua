@@ -1,16 +1,29 @@
 local M = {
-  -- "folke/tokyonight.nvim",
-  "rodvicj/tokyonight.nvim",
+  "folke/tokyonight.nvim",
+  -- "rodvicj/tokyonight.nvim",
   lazy = false, -- make sure we load this during startup if it is your main colorscheme
   priority = 1000, -- make sure to load this before all the other start plugins
 }
 
 function M.config()
+  local Util = require "tokyonight.util"
+
   require("tokyonight").setup {
     on_highlights = function(hl, c)
       hl.rainbowcol1 = { fg = "Gold" }
       hl.rainbowcol2 = { fg = "Orchid" }
       hl.rainbowcol3 = { fg = "DodgerBlue" }
+
+      -- hl["@tag.builtin"] = "Label"
+      hl["@tag.builtin"] = { fg = c.magenta }
+      -- hl["@attribute.builtin"] = "PreProc"
+      -- hl["@attribute.builtin"] = { fg = c.cyan }
+
+      -- WARNING: check what this highlights corresponds to;
+      hl["@attribute.builtin"] = { fg = "#ff0000", bold = true }
+
+      -- hl["@tag.delimiter.tsx"] = { fg = Util.blend_bg(c.blue, 0.7) }
+      hl["@tag.delimiter"] = { fg = Util.blend_bg(c.blue, 0.7) }
 
       --prevent unnecessary highlight in top winbar when splitting view
       hl.WinBar = { link = "none" }
