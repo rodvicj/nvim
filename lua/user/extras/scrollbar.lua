@@ -127,7 +127,7 @@ function M.config()
       "noice",
       "alpha",
       "NvimTree",
-      "",
+      -- "",
     },
     autocmd = {
       render = {

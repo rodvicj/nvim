@@ -156,7 +156,29 @@ function M.config()
       },
       { name = "buffer" },
       -- { name = "luasnip" },
-      -- { name = "cmp_tabnine" },
+
+      -- {
+      --   name = "buffer",
+      --   priority = 9,
+      --   option = {
+      --     indexing_interval = 1000,
+      --     max_indexed_line_length = 512,
+      --     get_bufnrs = function()
+      --       local bufs = vim.api.nvim_list_bufs()
+
+      --       result = {}
+      --       for _, v in ipairs(bufs) do
+      --         local byte_size = vim.api.nvim_buf_get_offset(v, vim.api.nvim_buf_line_count(v))
+      --         if byte_size < 1024 * 1024 then
+      --           result[#result + 1] = v
+      --         end
+      --       end
+
+      --       return result
+      --     end,
+      --   },
+      -- },
+      { name = "cmp_tabnine" },
       -- { name = "nvim_lua" },
       -- { name = "path" },
       -- { name = "calc" },
@@ -187,7 +209,6 @@ function M.config()
       { name = "buffer" },
     },
   })
-
 
   -- NOTE: only use lsp auto-complete in css to avoid polluted auto-completion provided by cmp;
   cmp.setup.filetype({ "css", "scss" }, {

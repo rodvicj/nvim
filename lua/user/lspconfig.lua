@@ -73,6 +73,11 @@ end
 function M.common_capabilities()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+  -- -- needed for arduino_language_server to work in neovim 0.9
+  -- capabilities.textDocument.semanticTokens = vim.NIL
+  -- capabilities.workspace.semanticTokens = vim.NIL
+
   return capabilities
 end
 
@@ -122,6 +127,8 @@ function M.config()
     "eslint",
     "gopls",
     "tailwindcss",
+    "arduino_language_server",
+    "clangd",
     -- "ts_ls",
   }
 
@@ -173,6 +180,49 @@ function M.config()
     if server == "lua_ls" then
       require("neodev").setup {}
     end
+
+    if server == "arduino_language_server" then
+      opts.cmd = {
+        "arduino-language-server",
+        "-cli-config",
+        "~/.arduino15/arduino-cli.yaml",
+        "-cli",
+        "arduino-cli",
+        "-clangd",
+        "clangd",
+        "-fqbn",
+        "arduino:avr:uno",
+      }
+      opts.filetypes = { "ino", "pde", "arduino" }
+    end
+
+    -- if server == "arduino_language_server" then
+    --   opts = {
+    --     filetypes = { "ino", "pde" },
+    --     cmd = { "arduino-language-server", "--stdio" }, -- Start the server
+    --     settings = {
+    --       arduino = {
+    --         arduinoPath = "/Applications/Arduino.app/Contents/MacOS/Arduino",
+    --         board = "arduino:avr:uno",
+    --       --   libraryPaths = {
+    --       --     "/path/to/arduino/libraries",
+    --       --     "/path/to/custom/libraries",
+    --       --   },
+    --       --   sketchPath = "/path/to/your/sketch",
+    --       },
+    --     },
+    --     -- Optional: Customize language server features
+    --     capabilities = {
+    --       textDocument = {
+    --         completion = {
+    --           completionItem = {
+    --             snippetSupport = true,
+    --           },
+    --         },
+    --       },
+    --     },
+    --   }
+    -- end
 
     lspconfig[server].setup(opts)
   end

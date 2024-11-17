@@ -15,3 +15,21 @@
 <!-- :delmarks z -->
 
 <!-- it's you against you -->
+<!-- `:w !sudo tee %` -->
+
+**Basic Syntax:**
+
+```vim
+/\<word\>
+```
+
+* `/`:  Initiates a forward search.
+* `\<`: Matches the beginning of a word.
+* `word`: The word you want to find.
+* `\>`: Matches the end of a word.
+
+
+
+<!-- cmp and none-ls -->
+-- When handling big files these two plugins needs to be disabled
+-- Needs to find a way to include this in faster.nvim for managing big files

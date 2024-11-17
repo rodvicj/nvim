@@ -29,7 +29,9 @@ function M.config()
       "toggleterm",
       "DressingSelect",
       "TelescopePrompt",
+      "neo-tree",
     },
+    -- large_file_cutoff = 100000,
   }
 end
 
