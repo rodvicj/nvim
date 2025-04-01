@@ -48,5 +48,6 @@ spec "user.extras.hipatterns"
 spec "user.extras.scrollbar"
 spec "user.extras.marks"
 spec "user.extras.faster"
+-- spec "user.extras.gemini"
 
 require "user.lazy"

@@ -1,8 +1,5 @@
 local M = {
   "hrsh7th/nvim-cmp",
-  event = "InsertEnter",
-
-  event = "VeryLazy",
   dependencies = {
     {
       "hrsh7th/cmp-nvim-lsp",
@@ -33,7 +30,7 @@ local M = {
       event = "InsertEnter",
       dependencies = {
         "rafamadriz/friendly-snippets",
-        -- commit = "7278f9d9aeee0e2befcb8a5b1a25c65bd54396aa",
+        commit = "7278f9d9aeee0e2befcb8a5b1a25c65bd54396aa",
       },
     },
     {
@@ -154,9 +151,7 @@ function M.config()
           return true
         end,
       },
-      { name = "buffer" },
       -- { name = "luasnip" },
-
       -- {
       --   name = "buffer",
       --   priority = 9,

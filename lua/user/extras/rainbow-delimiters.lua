@@ -1,5 +1,6 @@
 local M = {
-  "HiPhish/rainbow-delimiters.nvim",
+  -- "HiPhish/rainbow-delimiters.nvim",
+  "rodvicj/rainbow-delimiters.nvim",
   event = "VeryLazy",
 }
 

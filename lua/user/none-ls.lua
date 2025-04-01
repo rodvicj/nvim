@@ -25,7 +25,9 @@ function M.config()
       --   filetypes = { "javascript", "html" },
       --   -- extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
       -- },
-      formatting.black,
+      formatting.yapf,
+      -- -- use black when you have to change single quotes to double quotes in python
+      -- formatting.black,
 
       -- for htmldjango
       formatting.djlint.with {

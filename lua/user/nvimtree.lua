@@ -32,9 +32,17 @@ function M.config()
   local wk = require "which-key"
   wk.add {
     { "<leader>e", "<cmd>NvimTreeToggle<CR>", desc = "Explorer" },
-    --   -- TODO: create nvimtree whichkey that is visible when using leader key
-    { "<S-tab>", "<cmd>NvimTreeCollapse<cr> | <cmd>NvimTreeFocus<cr> | <cmd>buffer<cr>", desc = "Collapse" },
+    -- --   -- TODO: create nvimtree whichkey that is visible when using leader key
+    -- { "<S-tab>", "<cmd>NvimTreeCollapse<cr> | <cmd>NvimTreeFocus<cr> | <cmd>buffer<cr>", desc = "Collapse" },
+    { "<leader>n", "<cmd>NvimTreeCollapse<cr> | <cmd>NvimTreeFocus<cr> | <cmd>buffer<cr>", desc = "Collapse" },
   }
+
+  -- local keymap = vim.keymap.set
+  -- local opts = { noremap = true, silent = true }
+
+  --   -- { "<S-tab>", "<cmd>NvimTreeCollapse<cr> | <cmd>NvimTreeFocus<cr> | <cmd>buffer<cr>", desc = "Collapse" },
+  -- -- keymap("n", "<s-tab>", "<cmd>lua require('user.harpoon').mark_file()<cr>", opts)
+  -- keymap("n", "<s-tab>", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", opts)
 
   local icons = require "user.icons"
 
