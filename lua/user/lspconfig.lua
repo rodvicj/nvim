@@ -66,7 +66,8 @@ M.on_attach = function(client, bufnr)
   --   vim.lsp.handlers["textDocument/publishDiagnostics"] = filter_tsserver_diagnostics
   -- end
 
-  if client.supports_method "textDocument/inlayHint" then
+  -- if client.supports_method "textDocument/inlayHint" then
+  if client:supports_method "textDocument/inlayHint" then
     vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
   end
 end
