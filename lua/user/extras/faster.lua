@@ -24,7 +24,7 @@ function M.config()
           "treesitter",
           "indent_blankline",
           -- "vimopts",
-          -- "syntax",
+          "syntax",
           -- "filetype",
         },
         -- Files larger than `filesize` are considered big files. Value is in MB.
