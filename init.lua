@@ -25,13 +25,12 @@ spec "user.autopairs"
 spec "user.neogit"
 spec "user.alpha"
 
--- spec "user.project" --currently unmaintained returns error nvim_del_augroup_by_id
+spec "user.project"
 spec "user.indentline"
 spec "user.toggleterm"
 spec "user.bufferline"
 spec "user.autotag"
 spec "user.cmp"
--- spec "user.cmp-chris"
 spec "user.none-ls"
 
 -- Extras

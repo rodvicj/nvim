@@ -52,7 +52,7 @@ function M.config()
     hijack_cursor = false,
     hijack_netrw = true,
     hijack_unnamed_buffer_when_opening = false,
-    sync_root_with_cwd = true,
+    -- sync_root_with_cwd = true, --uncommented to remove error from project.nvim
     view = {
       adaptive_size = false,
       centralize_selection = true,
