@@ -44,7 +44,7 @@ spec "user.extras.dadbod-ui"
 spec "user.extras.markdown-preview"
 spec "user.extras.oil"
 spec "user.extras.zen"
--- spec "user.extras.hipatterns" -- causes stuttering in large files, use colorizer instead
+-- spec "user.extras.hipatterns" -- cause stuttering in large files
 spec "user.extras.colorizer"
 spec "user.extras.scrollbar"
 spec "user.extras.marks"
