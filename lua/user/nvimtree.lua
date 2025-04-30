@@ -61,7 +61,7 @@ function M.config()
       preserve_window_proportions = false,
       number = false,
       relativenumber = false,
-      signcolumn = "yes",
+      signcolumn = "no", -- using value "no" to minimize left side padding of nvimtree when using ufo.nvim
       float = {
         enable = false,
         quit_on_focus_loss = true,

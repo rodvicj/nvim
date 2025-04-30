@@ -99,25 +99,25 @@ function M.config()
   -- vim.keymap.set("n", "zr", require("ufo").openFoldsExceptKinds)
   -- vim.keymap.set("n", "zm", require("ufo").closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)
 
-  -- local wk = require "which-key"
-  -- wk.add {
-  --   {
-  --     "za",
-  --     desc = "Toggle fold",
-  --   },
-  --   {
-  --     "zm",
-  --     "<cmd>require('ufo').closeAllFolds<cr>",
-  --     desc = "Close all folds",
-  --   },
-  --   {
-  --     "zr",
-  --     "<cmd>require('ufo').openAllFolds<cr>",
-  --     desc = "Open all folds",
-  --   },
-  -- }
+  local wk = require "which-key"
+  wk.add {
+    {
+      "za",
+      desc = "Toggle fold",
+    },
+    {
+      "zm",
+      "<cmd>lua require('ufo').closeAllFolds()<cr>",
+      desc = "Close all folds",
+    },
+    {
+      "zr",
+      "<cmd>lua require('ufo').openAllFolds()<cr>",
+      desc = "Open all folds",
+    },
+  }
 
-  -- NOTE: conflict with lspconfig keymap "K"
+  -- -- NOTE: conflict with lspconfig keymap "K"
   -- vim.keymap.set("n", "K", function()
   --   local winid = require("ufo").peekFoldedLinesUnderCursor()
   --   if not winid then

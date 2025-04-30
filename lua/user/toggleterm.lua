@@ -101,7 +101,7 @@ function M.config()
   }
 
   function _HORIZONTAL_TERM()
-    horizontal_term:toggle(25)
+    horizontal_term:toggle(22)
   end
 
   vim.api.nvim_set_keymap(
