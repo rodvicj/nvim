@@ -106,14 +106,6 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
   group = "Persistent_Folds",
 })
 
--- vim.api.nvim_create_autocmd("BufEnter", {
---   pattern = "*",
---   callback = function()
---     if vim.bo.buftype == "quickfix" then
---       vim.cmd("NvimTreeToggle")
---     end
---   end,
--- })
 
 -- -- local general = vim.api.nvim_create_augroup("General", { clear = true })
 -- local opts = { noremap = true, silent = true }
