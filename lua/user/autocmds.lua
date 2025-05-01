@@ -106,6 +106,22 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
   group = "Persistent_Folds",
 })
 
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = { "nvcheatsheet", "neo-tree","NvimTree" },
+--   callback = function()
+--     require("ufo").detach()
+--     vim.opt_local.foldenable = false
+--   end
+-- })
+
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = { "NvimTree" },
+--   callback = function()
+--     require("ufo").detach()
+--     vim.opt_local.foldenable = false
+--     vim.opt_local.foldcolumn = "0"
+--   end,
+-- })
 
 -- -- local general = vim.api.nvim_create_augroup("General", { clear = true })
 -- local opts = { noremap = true, silent = true }

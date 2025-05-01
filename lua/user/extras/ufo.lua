@@ -16,6 +16,7 @@ function M.config()
       { text = { "%s" }, click = "v:lua.ScSa" },
       { text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
     },
+    ft_ignore = { "NvimTree" }, -- Lua table with 'filetype' values for which 'statuscolumn' will be unset
   }
 
   require("statuscol").setup(cfg)
@@ -62,6 +63,7 @@ function M.config()
     -- python = { "indent" },
     yaml = "",
     ["neo-tree"] = "",
+    -- ["NvimTree"] = "",
   }
 
   require("ufo").setup {
