@@ -50,7 +50,14 @@ vim.cmd [[set iskeyword+=-]]
 
 vim.g.netrw_banner = 0
 vim.g.netrw_mouse = 2
+
+-- fold options
 vim.opt.foldmethod = "manual" -- if fold doesnt work, try running commnand manually ":set foldmethod=manual"
+-- vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+-- vim.opt.foldmethod = "expr"
+-- vim.opt.foldnestmax = 1
+-- vim.opt.foldlevel = 99
+
 
 if tonumber(vim.inspect(vim.version().minor)) > 9 then
   vim.opt.smoothscroll = true

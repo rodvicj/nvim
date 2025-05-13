@@ -13,22 +13,17 @@ local function lsp_keymaps(bufnr)
   local keymap = vim.api.nvim_buf_set_keymap
   keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
   keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
-  keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
-  -- vim.keymap.set("n", "K", function()
-  --   local winid = require("ufo").peekFoldedLinesUnderCursor()
-  --   if not winid then
-  --     vim.lsp.buf.hover()
-  --   end
-  -- end)
+  -- keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
+  vim.keymap.set("n", "K", function()
+    local winid = require("ufo").peekFoldedLinesUnderCursor()
+    if not winid then
+      vim.lsp.buf.hover()
+    end
+  end)
   keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
   keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", opts)
   keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
-  -- vim.keymap.set("n", "gl", vim.diagnostic.open_float, opts)
   keymap(bufnr, "n", "gt", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
-
-  -- { "<leader>n", "<cmd>NvimTreeCollapse<cr> | <cmd>NvimTreeFocus<cr> | <cmd>buffer<cr>", desc = "Collapse" },
-  -- keymap(bufnr, "n", "gr", "<cmd>NvimTreeClose<cr> | <cmd>lua vim.lsp.buf.references()<cr>", opts)
-
 
 end
 
@@ -141,6 +136,7 @@ function M.config()
     "tailwindcss",
     "arduino_language_server",
     "clangd",
+    "ruff",
     -- "ts_ls",
   }
 

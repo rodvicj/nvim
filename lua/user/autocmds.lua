@@ -106,22 +106,25 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
   group = "Persistent_Folds",
 })
 
--- vim.api.nvim_create_autocmd("FileType", {
---   pattern = { "nvcheatsheet", "neo-tree","NvimTree" },
+-- local autocmd = vim.api.nvim_create_autocmd
+-- local augroup = vim.api.nvim_create_augroup
+-- local save_fold = augroup("Persistent Folds", { clear = true })
+
+-- autocmd("BufWinLeave", {
+--   pattern = "*.*",
 --   callback = function()
---     require("ufo").detach()
---     vim.opt_local.foldenable = false
---   end
+--     vim.cmd.mkview()
+--   end,
+--   group = save_fold,
+-- })
+-- autocmd("BufWinEnter", {
+--   pattern = "*.*",
+--   callback = function()
+--     vim.cmd.loadview({ mods = { emsg_silent = true } })
+--   end,
+--   group = save_fold,
 -- })
 
--- vim.api.nvim_create_autocmd("FileType", {
---   pattern = { "NvimTree" },
---   callback = function()
---     require("ufo").detach()
---     vim.opt_local.foldenable = false
---     vim.opt_local.foldcolumn = "0"
---   end,
--- })
 
 -- -- local general = vim.api.nvim_create_augroup("General", { clear = true })
 -- local opts = { noremap = true, silent = true }

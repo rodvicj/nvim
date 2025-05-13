@@ -27,6 +27,7 @@ function M.config()
       "marksman",
       "tailwindcss",
       "rust_analyzer",
+      "ruff",
     },
   }
 
