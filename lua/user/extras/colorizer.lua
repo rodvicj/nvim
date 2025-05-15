@@ -17,6 +17,7 @@ function M.config()
       "astro",
       "lua",
       "json",
+      "conf",
     },
     user_default_options = {
       names = false,
