@@ -125,7 +125,6 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 --   group = save_fold,
 -- })
 
-
 -- -- local general = vim.api.nvim_create_augroup("General", { clear = true })
 -- local opts = { noremap = true, silent = true }
 -- vim.api.nvim_create_augroup("General", { clear = true })

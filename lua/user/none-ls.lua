@@ -15,7 +15,7 @@ function M.config()
     debug = false,
     sources = {
 
-      require "none-ls.diagnostics.flake8",
+      -- require "none-ls.diagnostics.flake8",
       -- require("none-ls.diagnostics.flake8").with {
       --   extra_args = { "--ignore=E501,E203,F821,F401,W504,E303,W292" },
       -- },

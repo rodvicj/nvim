@@ -36,8 +36,8 @@ function M.config()
       "stylua",
       "prettier",
       "eslint",
-      "flake8",
-      "black",
+      -- "flake8",
+      -- "black",
       "djlint",
     },
   }
