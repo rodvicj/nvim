@@ -1,16 +1,34 @@
 return {
   settings = {
     pyright = {
-      disableOrganizeImports = true, -- Using Ruff
+      disableOrganizeImports = true,
+      disableTaggedHints = true,
     },
     python = {
       analysis = {
-        ignore = { "*" }, -- Using Ruff
-        -- typeCheckingMode = "off", -- Using mypy
+        diagnosticSeverityOverrides = {
+          -- https://github.com/microsoft/pyright/blob/main/docs/configuration.md#type-check-diagnostics-settings
+          reportUndefinedVariable = "none",
+        },
       },
     },
   },
 }
+
+-- return {
+--   settings = {
+--     pyright = {
+--       disableOrganizeImports = true, -- Using Ruff
+--     },
+--     python = {
+--       analysis = {
+--         ignore = { "*" }, -- Using Ruff
+--         -- typeCheckingMode = "off", -- Using mypy
+--       },
+--     },
+--   },
+-- }
+
 
 -- return {
 --   settings = {
@@ -26,4 +44,3 @@ return {
 --     },
 --   },
 -- }
-

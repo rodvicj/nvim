@@ -1,8 +1,8 @@
 local M = {
   "williamboman/mason-lspconfig.nvim",
+  tag = "v1.32.0",
   dependencies = {
     "williamboman/mason.nvim",
-    "WhoIsSethDaniel/mason-tool-installer.nvim",
     "nvim-lua/plenary.nvim",
   },
 }
@@ -28,17 +28,6 @@ function M.config()
       "tailwindcss",
       "rust_analyzer",
       "ruff",
-    },
-  }
-
-  require("mason-tool-installer").setup {
-    ensure_installed = {
-      "stylua",
-      "prettier",
-      "eslint",
-      -- "flake8",
-      -- "black",
-      "djlint",
     },
   }
 end

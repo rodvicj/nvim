@@ -14,11 +14,6 @@ function M.config()
   null_ls.setup {
     debug = false,
     sources = {
-
-      -- require "none-ls.diagnostics.flake8",
-      -- require("none-ls.diagnostics.flake8").with {
-      --   extra_args = { "--ignore=E501,E203,F821,F401,W504,E303,W292" },
-      -- },
       formatting.stylua,
       formatting.prettier,
       -- formatting.prettier.with {
