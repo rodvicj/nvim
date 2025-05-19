@@ -93,3 +93,7 @@ I recommend using the following repo to get a "Nerd Font" (Font that supports ic
 > The computing scientist's main challenge is not to get confused by the complexities of his own making.
 
 \- Edsger W. Dijkstra
+
+
+## Notes
+Stick with neovim 0.10 for now, upgrading to 0.11+ inlucdes some lsp related bugs because of new lsp api setup introduced in 0.11
