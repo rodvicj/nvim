@@ -44,9 +44,9 @@ local M = {
 }
 
 function M.config()
-    require("tailwindcss-colorizer-cmp").setup {
-      color_square_width = 1,
-    }
+  require("tailwindcss-colorizer-cmp").setup {
+    color_square_width = 1,
+  }
   local cmp = require "cmp"
   local luasnip = require "luasnip"
   require("luasnip/loaders/from_vscode").lazy_load()
