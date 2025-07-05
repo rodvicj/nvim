@@ -60,6 +60,7 @@ function M.config()
       width = {
         min = 19,
         -- max = 35, -- can set max width if working on projects with very long names
+        padding = 0
       },
       side = "left",
       preserve_window_proportions = false,
