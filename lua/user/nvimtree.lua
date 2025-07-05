@@ -54,9 +54,13 @@ function M.config()
     hijack_unnamed_buffer_when_opening = false,
     -- sync_root_with_cwd = true, --uncommented to remove error from project.nvim
     view = {
-      adaptive_size = false,
+      adaptive_size = true,
       centralize_selection = true,
-      width = 26,
+      -- width = 19,
+      width = {
+        min = 19,
+        -- max = 35, -- can set max width if working on projects with very long names
+      },
       side = "left",
       preserve_window_proportions = false,
       number = false,
@@ -75,6 +79,11 @@ function M.config()
         },
       },
     },
+    -- actions = {
+    --   open_file = {
+    --     resize_window = true,
+    --   },
+    -- },
     renderer = {
       add_trailing = false,
       group_empty = false,
