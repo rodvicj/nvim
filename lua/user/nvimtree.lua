@@ -59,7 +59,7 @@ function M.config()
       -- width = 19,
       width = {
         min = 19,
-        -- max = 35, -- can set max width if working on projects with very long names
+        max = 30, -- can set max width if working on projects with very long names
         padding = 0
       },
       side = "left",

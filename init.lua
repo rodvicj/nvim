@@ -54,3 +54,4 @@ spec "user.extras.ufo"
 -- spec "user.extras.gemini"
 
 require "user.lazy"
+-- pg_ctl -D /var/lib/postgres/data -l logfile start
