@@ -13,14 +13,6 @@ local function lsp_keymaps(bufnr)
   local keymap = vim.api.nvim_buf_set_keymap
   keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
   keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
-  vim.keymap.set("n", "K", function()
-    local winid = require("ufo").peekFoldedLinesUnderCursor()
-    if not winid then
-      vim.lsp.buf.hover {
-        border = "rounded",
-      }
-    end
-  end, opts)
   keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
   keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", opts)
   keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
@@ -30,52 +22,14 @@ end
 M.on_attach = function(client, bufnr)
   lsp_keymaps(bufnr)
 
-  -- remove error codes in tsserver diagnostics
-  -- if client.name == "typescript-tools" then
-  --   local function filter_tsserver_diagnostics(_, result, ctx, config)
-  --     if result.diagnostics == nil then
-  --       return
-  --     end
-
-  --     -- -- remove tsserver diagnostic
-  --     -- for idx = #result.diagnostics, 1, -1 do
-  --     --   -- local entry = result.diagnostics[idx]
-  --     --   table.remove(result.diagnostics, idx)
-  --     -- end
-
-  --     -- remove specific error codes in tsserver
-  --     local error_codes = { 1005 }
-  --     local idx = 1
-  --     local hasMatch = false
-
-  --     while idx <= #result.diagnostics do
-  --       local entry = result.diagnostics[idx]
-
-  --       for _, error in ipairs(error_codes) do
-  --         if entry.code == error then
-  --           table.remove(result.diagnostics, idx)
-  --           hasMatch = true
-  --           break -- Exit the loop after removing the entry
-  --         end
-  --       end
-
-  --       if not hasMatch then
-  --         idx = idx + 1
-  --       end
-
-  --       hasMatch = false -- Reset the flag for the next iteration
-  --     end
-
-  --     vim.lsp.diagnostic.on_publish_diagnostics(_, result, ctx, config)
-  --   end
-
-  --   vim.lsp.handlers["textDocument/publishDiagnostics"] = filter_tsserver_diagnostics
+  -- if client:supports_method "textDocument/inlayHint" then
+  --   vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
   -- end
 
-  -- if client.supports_method "textDocument/inlayHint" then
-  if client:supports_method "textDocument/inlayHint" then
-    vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
-  end
+  -- vim.lsp.inlay_hint.enable(false)
+  -- vim.lsp.inlay_hint.config({
+  --   enabled = false, -- Set to true to enable them by default
+  -- })
 end
 
 function M.common_capabilities()
@@ -130,7 +84,8 @@ function M.config()
     "lua_ls",
     "cssls",
     "html",
-    "pyright",
+    -- "pyright",
+    "basedpyright",
     "bashls",
     "jsonls",
     "yamlls",
@@ -146,38 +101,31 @@ function M.config()
     -- "ts_ls",
   }
 
-  local default_diagnostic_config = {
-    signs = {
-      active = true,
-      values = {
-        { name = "DiagnosticSignError", text = icons.diagnostics.Error },
-        { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
-        { name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
-        { name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
-      },
-    },
-    virtual_text = false,
-    update_in_insert = false,
-    underline = true,
-    severity_sort = true,
+  -- Configure diagnostic display with custom signs
+  vim.diagnostic.config {
     float = {
       focusable = true,
       style = "minimal",
       border = "rounded",
-      source = "always",
+      source = true, -- Show source in diagnostic popup window
       header = "",
       prefix = "",
     },
+    virtual_text = false,
+    virtual_lines = false,
+    signs = {
+      text = {
+        [vim.diagnostic.severity.ERROR] = " ",
+        [vim.diagnostic.severity.WARN] = " ",
+        [vim.diagnostic.severity.HINT] = " ",
+        [vim.diagnostic.severity.INFO] = " ",
+      },
+    },
+    underline = true,
+    update_in_insert = false,
+    severity_sort = true,
   }
 
-  vim.diagnostic.config(default_diagnostic_config)
-
-  for _, sign in ipairs(vim.tbl_get(vim.diagnostic.config(), "signs", "values") or {}) do
-    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
-  end
-
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
   require("lspconfig.ui.windows").default_options.border = "rounded"
 
   for _, server in pairs(servers) do
