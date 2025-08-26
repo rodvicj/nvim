@@ -20,7 +20,7 @@ function M.config()
       "cssls",
       "html",
       "ts_ls",
-      "pyright",
+      "basedpyright",
       "bashls",
       "jsonls",
       "yamlls",

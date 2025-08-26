@@ -48,6 +48,7 @@ spec "user.extras.colorizer"
 spec "user.extras.scrollbar"
 spec "user.extras.marks"
 spec "user.extras.ufo"
+spec "user.extras.render-markdown"
 -- spec "user.extras.hipatterns" -- cause stuttering in large files
 -- spec "user.extras.copilot"
 -- spec "user.extras.faster"
