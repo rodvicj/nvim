@@ -20,7 +20,12 @@ function M.config()
       -- hl["@attribute.builtin"] = { fg = c.cyan }
 
       -- WARNING: check what this highlights corresponds to;
-      hl["@attribute.builtin"] = { fg = "#ff0000", bold = true }
+      -- hl["@attribute.builtin"] = { fg = "#ff0000", bold = true }
+      -- FOUND: python @builtin function like 
+      --   -- @staticmethod
+      --   -- def post(request):
+      --   --     serializer = LoginSerializer(data=request.data)
+
       -- hl["@tag.delimiter.tsx"] = { fg = Util.blend_bg(c.blue, 0.7) }
       hl["@tag.delimiter"] = { fg = Util.blend_bg(c.blue, 0.7) }
 
