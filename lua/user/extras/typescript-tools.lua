@@ -1,17 +1,20 @@
 local M = {
   "pmizio/typescript-tools.nvim",
   dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+  opts = {},
 }
+
+-- local lsp_capabilities = vim.lsp.protocol.make_client_capabilities()
 
 function M.config()
   local lspconfig = require "user.lspconfig"
   require("typescript-tools").setup {
-    on_attach = function(client, bufnr)
-      lspconfig.on_attach(client, bufnr)
-      client.server_capabilities.documentFormattingProvider = false
-      client.server_capabilities.documentRangeFormattingProvider = false
-    end,
-    capabilities = lspconfig.common_capabilities(),
+    -- on_attach = function(client, bufnr)
+    --   lspconfig.on_attach(client, bufnr)
+    --   client.server_capabilities.documentFormattingProvider = false
+    --   client.server_capabilities.documentRangeFormattingProvider = false
+    -- end,
+    -- capabilities = lspconfig.common_capabilities(),
     settings = {
       -- spawn additional tsserver instance to calculate diagnostics on it
       separate_diagnostic_server = true,
