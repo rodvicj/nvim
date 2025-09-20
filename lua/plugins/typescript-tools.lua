@@ -7,7 +7,7 @@ local M = {
 -- local lsp_capabilities = vim.lsp.protocol.make_client_capabilities()
 
 function M.config()
-  local lspconfig = require "user.lspconfig"
+  local lspconfig = require "lspconfig"
   require("typescript-tools").setup {
     -- on_attach = function(client, bufnr)
     --   lspconfig.on_attach(client, bufnr)
