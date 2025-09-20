@@ -36,3 +36,9 @@ it's you against you
 
 <!-- find cd -->
 esc + esc + esc + c
+
+-- spec "user.extras.hipatterns" -- cause stuttering in large files
+-- spec "user.extras.copilot"
+-- spec "user.extras.faster"
+-- spec "user.extras.gemini"
+-- spec "user.extras.lazydev" -- should change "folke/neodev.nvim"
