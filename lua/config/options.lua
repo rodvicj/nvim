@@ -58,7 +58,6 @@ vim.opt.foldmethod = "manual" -- if fold doesnt work, try running commnand manua
 -- vim.opt.foldnestmax = 1
 -- vim.opt.foldlevel = 99
 
-
 if tonumber(vim.inspect(vim.version().minor)) > 9 then
   vim.opt.smoothscroll = true
 end

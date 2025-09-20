@@ -19,7 +19,7 @@ return {
 
         -- WARNING: check what this highlights corresponds to;
         -- hl["@attribute.builtin"] = { fg = "#ff0000", bold = true }
-        -- FOUND: python @builtin function like 
+        -- FOUND: python @builtin function like
         --   -- @staticmethod
         --   -- def post(request):
         --   --     serializer = LoginSerializer(data=request.data)
@@ -46,7 +46,11 @@ return {
 
         -- hl.IblIndent = { fg = c.fg_gutter, nocombine = true }
         -- c.comment == "#565f89"
-        hl.IblScope = { fg = c.comment, nocombine = true }
+
+        -- indent line colors
+        -- hl.IblScope = { fg = c.comment, nocombine = true }
+        -- hl.IndentLineCurrent = { fg = c.comment, nocombine = true }
+        -- hl.IndentLine = { fg = c.comment, nocombine = true }
       end,
     }
 
