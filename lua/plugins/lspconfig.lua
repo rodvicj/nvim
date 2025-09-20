@@ -89,8 +89,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
     opts.desc = "Show LSP type definitions"
     keymap.set("n", "gt", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
 
-    opts.desc = "See available code actions"
-    keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+    -- opts.desc = "See available code actions"
+    -- keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
 
     opts.desc = "Smart rename"
     keymap.set("n", "<leader>lr", vim.lsp.buf.rename, opts)
