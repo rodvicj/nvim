@@ -8,8 +8,8 @@ function M.config()
   require("typescript-tools").setup {
     on_attach = function(client, bufnr)
       lspconfig.on_attach(client, bufnr)
-      client.server_capabilities.documentFormattingProvider = false
-      client.server_capabilities.documentRangeFormattingProvider = false
+      -- client.server_capabilities.documentFormattingProvider = false
+      -- client.server_capabilities.documentRangeFormattingProvider = false
     end,
     capabilities = lspconfig.common_capabilities(),
     settings = {
