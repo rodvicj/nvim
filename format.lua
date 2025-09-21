@@ -1,0 +1,26 @@
+-- return {
+--   "akinsho/bufferline.nvim",
+--   event = "VeryLazy",
+--   dependencies = "echasnovski/mini.icons",
+--   keys = {
+--     { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle Pin" },
+--     { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete Non-Pinned Buffers" },
+--     { "[B", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer prev" },
+--     { "]B", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer next" },
+--   },
+--   config = function() end,
+-- }
+
+-- return {
+--   "akinsho/bufferline.nvim",
+--   event = "VeryLazy",
+--   dependencies = "echasnovski/mini.icons",
+--   keys = {
+--     { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle Pin" },
+--     { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete Non-Pinned Buffers" },
+--     { "[B", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer prev" },
+--     { "]B", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer next" },
+--   },
+--   opts = {},
+--   config = function(_, opts) end,
+-- }

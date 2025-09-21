@@ -1,34 +1,12 @@
-local M = {
+local colors = require("tokyonight.colors").setup()
+
+return {
   "petertriho/nvim-scrollbar",
   event = "VeryLazy",
   dependencies = {
     "kevinhwang91/nvim-hlslens",
   },
-}
-
---     set_keymap( "n", "n", "<CMD>execute('normal! ' . v:count1 . 'n')<CR><CMD>lua require('hlslens').start()<CR>", opts)
---     set_keymap( "n", "N", "<CMD>execute('normal! ' . v:count1 . 'N')<CR><CMD>lua require('hlslens').start()<CR>", opts)
---     set_keymap("n", "*", "*<CMD>lua require('hlslens').start()<CR>", opts)
---     set_keymap("n", "#", "#<CMD>lua require('hlslens').start()<CR>", opts)
---     set_keymap("n", "g*", "g*<CMD>lua require('hlslens').start()<CR>", opts)
---     set_keymap("n", "g#", "g#<CMD>lua require('hlslens').start()<CR>", opts)
-
--- vim.keymap.set("n", "<C-t>", api.tree.change_root_to_parent, opts "Up"),
-
-local opts = { noremap = true, silent = true }
-vim.keymap.set("n", "n", "<CMD>execute('normal! ' . v:count1 . 'n')<CR><CMD>lua require('hlslens').start()<CR>", opts)
-vim.keymap.set("n", "N", "<CMD>execute('normal! ' . v:count1 . 'N')<CR><CMD>lua require('hlslens').start()<CR>", opts)
-vim.keymap.set("n", "#", "#<CMD>lua require('hlslens').start()<CR>", opts)
-
-local colors = require("tokyonight.colors").setup()
-
-
-function M.config()
-  require("scrollbar.handlers.search").setup {
-    override_lens = function() end,
-  }
-
-  require("scrollbar").setup {
+  opts = {
     show = true,
     show_in_active_only = true,
     set_highlights = true,
@@ -154,7 +132,27 @@ function M.config()
       handle = true,
       search = true, -- Requires hlslens
     },
-  }
-end
+  },
 
-return M
+  config = function(_, opts)
+    require("scrollbar").setup(opts)
+    local opt = { noremap = true, silent = true }
+    vim.keymap.set(
+      "n",
+      "n",
+      "<CMD>execute('normal! ' . v:count1 . 'n')<CR><CMD>lua require('hlslens').start()<CR>",
+      opt
+    )
+    vim.keymap.set(
+      "n",
+      "N",
+      "<CMD>execute('normal! ' . v:count1 . 'N')<CR><CMD>lua require('hlslens').start()<CR>",
+      opt
+    )
+    vim.keymap.set("n", "#", "#<CMD>lua require('hlslens').start()<CR>", opt)
+
+    require("scrollbar.handlers.search").setup {
+      override_lens = function() end,
+    }
+  end,
+}

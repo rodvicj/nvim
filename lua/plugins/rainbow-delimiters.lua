@@ -1,33 +1,53 @@
-local M = {
+return {
   -- "HiPhish/rainbow-delimiters.nvim",
   "rodvicj/rainbow-delimiters.nvim",
   event = "VeryLazy",
+  config = function()
+    local rainbow_delimiters = require "rainbow-delimiters"
+    require("rainbow-delimiters.setup").setup {
+      strategy = {
+        [""] = rainbow_delimiters.strategy["global"],
+      },
+      query = {
+        [""] = "rainbow-delimiters",
+        javascript = "rainbow-delimiters",
+        tsx = "rainbow-parens",
+        xml = "rainbow-parens",
+      },
+      highlight = {
+        "rainbowcol1",
+        "rainbowcol2",
+        "rainbowcol3",
+      },
+      blacklist = { "html" },
+    }
+  end,
 }
 
-function M.config()
-  local rainbow_delimiters = require "rainbow-delimiters"
+-- function M.config()
+--   local rainbow_delimiters = require "rainbow-delimiters"
 
-  require("rainbow-delimiters.setup").setup {
-    strategy = {
-      [""] = rainbow_delimiters.strategy["global"],
-    },
-    query = {
-      [""] = "rainbow-delimiters",
-      javascript = "rainbow-delimiters",
-      tsx = "rainbow-parens",
-      xml = "rainbow-parens",
-    },
-    highlight = {
-      "rainbowcol1",
-      "rainbowcol2",
-      "rainbowcol3",
-    },
-    blacklist = { "html" },
-  }
+--   require("rainbow-delimiters.setup").setup {
+--     strategy = {
+--       [""] = rainbow_delimiters.strategy["global"],
+--     },
+--     query = {
+--       [""] = "rainbow-delimiters",
+--       javascript = "rainbow-delimiters",
+--       tsx = "rainbow-parens",
+--       xml = "rainbow-parens",
+--     },
+--     highlight = {
+--       "rainbowcol1",
+--       "rainbowcol2",
+--       "rainbowcol3",
+--     },
+--     blacklist = { "html" },
+--   }
 
-end
+-- end
 
-return M
+-- return M
 
 --  -- settings for my customized rainbow-delimiters
 -- local M = {
