@@ -58,11 +58,10 @@ return {
   config = function(_, opts)
     -- Apply the plugin's options
     require("bufferline").setup(opts)
-
     -- Configure which-key mappings. This is a side-effect that
     -- should happen during configuration, not during definition.
     local wk = require "which-key"
-    wk.add({
+    wk.add {
       { "<leader>1", "<Cmd>BufferLineGoToBuffer 1<CR>", hidden = true },
       { "<leader>2", "<Cmd>BufferLineGoToBuffer 2<CR>", hidden = true },
       { "<leader>3", "<Cmd>BufferLineGoToBuffer 3<CR>", hidden = true },
@@ -73,6 +72,6 @@ return {
       { "<leader>8", "<Cmd>BufferLineGoToBuffer 8<CR>", hidden = true },
       { "<leader>9", "<Cmd>BufferLineGoToBuffer 9<CR>", hidden = true },
       { "<leader>0", "<Cmd>BufferLineGoToBuffer -1<CR>", hidden = true },
-    })
+    }
   end,
 }

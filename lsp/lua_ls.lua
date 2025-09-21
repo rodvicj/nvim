@@ -36,3 +36,11 @@ return {
     },
   },
 }
+-- {
+--   "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+--   "format.enable": true,
+--   "format.defaultConfig": {
+--     "indent_style": "space",
+--     "indent_size": 2
+--   }
+-- }
