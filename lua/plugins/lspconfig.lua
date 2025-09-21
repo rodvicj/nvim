@@ -127,12 +127,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap.set("n", "<leader>lH", "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>", opts)
 
     opts.desc = "Format"
-    keymap.set(
-      "n",
-      "<leader>lf",
-      "<cmd>lua vim.lsp.buf.format({async = true, filter = function(client) return client.name ~= 'typescript-tools' end})<CR>",
-      opts
-    )
+    -- keymap.set(
+    --   "n",
+    --   "<leader>lf",
+    --   "<cmd>lua vim.lsp.buf.format({async = true, filter = function(client) return client.name ~= 'typescript-tools' end})<CR>",
+    --   opts
+    -- )
 
     --     { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
     --     {
