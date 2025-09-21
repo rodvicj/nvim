@@ -1,5 +1,3 @@
-local colors = require("tokyonight.colors").setup()
-
 return {
   "petertriho/nvim-scrollbar",
   event = "VeryLazy",
@@ -24,8 +22,7 @@ return {
         -- text = "•",
         text = "─",
         priority = 0,
-        -- color = "#7f7f7f",
-        color = colors.orange,
+        color = "#ff9e64",
         cterm = nil,
         -- highlight = "Normal",
       },
@@ -34,8 +31,7 @@ return {
         text = { "=" },
         priority = 1,
         -- color = nil,
-        color = colors.orange,
-        -- color = "#565f89",
+        color = "#ff9e64",
         -- cterm = nil,
         highlight = "Search",
       },
@@ -133,9 +129,7 @@ return {
       search = true, -- Requires hlslens
     },
   },
-
   config = function(_, opts)
-    require("scrollbar").setup(opts)
     local opt = { noremap = true, silent = true }
     vim.keymap.set(
       "n",
@@ -154,5 +148,7 @@ return {
     require("scrollbar.handlers.search").setup {
       override_lens = function() end,
     }
+
+    require("scrollbar").setup(opts)
   end,
 }
