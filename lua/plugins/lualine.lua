@@ -99,6 +99,19 @@ function M.get_attached_clients()
     end
   end
 
+  -- Check if 'conform' is available
+  local status, conform = pcall(require, "conform")
+  -- only run if status is true
+  if status then
+    -- Get formatters for the current buffer
+    local formatters = conform.list_formatters_for_buffer()
+    if formatters and #formatters > 0 then
+      for _, formatter in ipairs(formatters) do
+        table.insert(buf_client_names, formatter)
+      end
+    end
+  end
+
   -- This needs to be a string only table so we can use concat below
   local unique_client_names = {}
   for _, client_name_target in ipairs(buf_client_names) do
@@ -114,7 +127,9 @@ function M.get_attached_clients()
   end
 
   local client_names_str = table.concat(unique_client_names, ", ")
+  -- local xx = table.concat(formatters, ", ")
   local language_servers = string.format("[%s]", client_names_str)
+  -- local language_servers = string.format("[%s]", xx)
 
   return language_servers
 end
