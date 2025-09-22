@@ -14,7 +14,7 @@ return {
         css = { "prettierd" },
         html = { "prettierd" },
         -- htmldjango = { "djlint", "prettierd" },
-        htmldjango = { "djlint"},
+        htmldjango = { "djlint" },
         json = { "prettierd" },
         yaml = { "prettierd" },
         markdown = { "prettierd" },
@@ -60,7 +60,12 @@ return {
           prepend_args = { "-i", "2" }, -- 2 spaces indentation
         },
         djlint = {
-          prepend_args = { "--indent=2", "--max-blank-lines=1", "--blank-line-after-tag=extends", "--close-void-tags" },
+          prepend_args = {
+            "--indent=2",
+            "--max-blank-lines=0",
+            "--blank-line-after-tag=extends",
+            "--close-void-tags",
+          },
         },
       },
     }
