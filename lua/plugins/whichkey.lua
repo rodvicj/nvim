@@ -1,7 +1,7 @@
 return {
   "folke/which-key.nvim",
   event = "VeryLazy",
-  ops = {
+  opts = {
     pugins = {
       marks = false,
       registers = false,
@@ -40,7 +40,6 @@ return {
     local wk = require "which-key"
     wk.setup(opts)
 
-    -- Document existing key chains using new spec format
     wk.add {
       { "<leader>b", group = "Buffers" },
       { "<leader>d", group = "Debug" },
