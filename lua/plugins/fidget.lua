@@ -1,5 +1,6 @@
 local M = {
   "j-hui/fidget.nvim",
+  commit = "dac6be264cb12e0e2532f4fdcf095c0cb7ab1609",
 }
 
 function M.config()
