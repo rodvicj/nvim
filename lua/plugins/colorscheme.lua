@@ -39,6 +39,18 @@ return {
         -- default for CursorLine { fg = c.orange, bold = true }
         hl.CursorLineNr = { fg = c.dark5, bold = false }
 
+        -- hl.MarkSignHL = { fg = c.comment, bold = false }
+        -- hl.MarkSignNumHL = { fg = c.comment, bold = false }
+        -- hl.MarkVirtTextHL = { fg = c.comment, bold = false }
+
+        -- hl.MarkSignHL = {link = "none"}
+        -- hl.MarkSignNumHL = {link = "none"}
+        -- hl.MarkVirtTextHL = {link = "none"}
+
+        -- MarkSignHL
+        -- MarkSignNumHL
+        -- MarkVirtTextHL
+
         -- IndentBlanklineChar        = { fg = c.fg_gutter, nocombine = true },
         -- IndentBlanklineContextChar = { fg = c.blue1, nocombine = true },
         -- IblIndent                  = { fg = c.fg_gutter, nocombine = true },
