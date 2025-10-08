@@ -33,8 +33,10 @@ return {
         -- print("@tag.delimiter", Util.blend_bg(c.blue, 0.7))
 
         --prevent unnecessary highlight in top winbar when splitting view
-        hl.WinBar = { link = "none" }
-        hl.WinBarNC = { link = "none" }
+
+        -- -- NOTE: temporarily commented used before for indentBlankLine to remove upper winbar highlight
+        -- hl.WinBar = { link = "none" }
+        -- hl.WinBarNC = { link = "none" }
 
         -- default for CursorLine { fg = c.orange, bold = true }
         hl.CursorLineNr = { fg = c.dark5, bold = false }
@@ -63,6 +65,10 @@ return {
         -- hl.IblScope = { fg = c.comment, nocombine = true }
         -- hl.IndentLineCurrent = { fg = c.comment, nocombine = true }
         -- hl.IndentLine = { fg = c.comment, nocombine = true }
+
+        -- make windows picker choice brighter when picking for new file in virtical split window
+        hl.StatusLineNC = { fg = c.orange, nocombine = true }
+
       end,
     }
 
