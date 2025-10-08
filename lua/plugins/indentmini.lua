@@ -1,7 +1,8 @@
 local icons = require "user.icons"
 
 return {
-  "nvimdev/indentmini.nvim",
+  -- "nvimdev/indentmini.nvim",
+  "rodvicj/indentmini.nvim",
   enabled = true,
   opts = {
     char = icons.ui.LineLeft,

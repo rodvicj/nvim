@@ -34,9 +34,8 @@ return {
 
         --prevent unnecessary highlight in top winbar when splitting view
 
-        -- -- NOTE: temporarily commented used before for indentBlankLine to remove upper winbar highlight
-        -- hl.WinBar = { link = "none" }
-        -- hl.WinBarNC = { link = "none" }
+        hl.WinBar = { link = "none" }
+        hl.WinBarNC = { link = "none" }
 
         -- default for CursorLine { fg = c.orange, bold = true }
         hl.CursorLineNr = { fg = c.dark5, bold = false }
