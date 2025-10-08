@@ -19,6 +19,7 @@ return {
         "neogitstatus",
         "NvimTree",
         "Trouble",
+        "csv",
       },
       buftypes = { "terminal", "nofile" },
     },
