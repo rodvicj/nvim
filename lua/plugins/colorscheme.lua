@@ -40,12 +40,15 @@ return {
         -- default for CursorLine { fg = c.orange, bold = true }
         hl.CursorLineNr = { fg = c.dark5, bold = false }
 
+        -- hl.WinBar = { fg = c.orange, bg = c.orange } -- status lines of not-current windows No…
+        -- hl.WinBarNC = { fg = c.orange, bg = c.orange } -- status line of current window
+
         -- hl.MarkSignHL = { fg = c.comment, bold = false }
         -- hl.MarkSignNumHL = { fg = c.comment, bold = false }
         -- hl.MarkVirtTextHL = { fg = c.comment, bold = false }
 
         -- hl.MarkSignHL = {link = "none"}
-        -- hl.MarkSignNumHL = {link = "none"}
+        hl.MarkSignNumHL = { link = "none" }
         -- hl.MarkVirtTextHL = {link = "none"}
 
         -- MarkSignHL
@@ -67,7 +70,6 @@ return {
 
         -- make windows picker choice brighter when picking for new file in virtical split window
         hl.StatusLineNC = { fg = c.orange, nocombine = true }
-
       end,
     }
 

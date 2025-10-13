@@ -24,8 +24,7 @@ return {
         --   end
         -- end,
       },
-      -- indent = { enable = true, disable = { "html", "python" } },
-      indent = { enable = true, disable = { "html" } },
+      indent = { enable = true, disable = { "html", "python" } },
       -- Install parsers synchronously (only applied to `ensure_installed`)
       sync_install = false,
 
