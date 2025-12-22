@@ -11,6 +11,13 @@ return {
         hl.rainbowcol1 = { fg = "Gold" }
         hl.rainbowcol2 = { fg = "Orchid" }
         hl.rainbowcol3 = { fg = "DodgerBlue" }
+        -- require("tokyonight").setup {
+        --   on_highlights = function(hl, c)
+        --     hl.rainbowcol1 = { fg = "#FFD700" } -- Gold
+        --     hl.rainbowcol2 = { fg = "#DA70D6" } -- Orchid
+        --     hl.rainbowcol3 = { fg = "#1E90FF" } -- DodgerBlue
+        --   end
+        -- }
 
         -- hl["@tag.builtin"] = "Label"
         hl["@tag.builtin"] = { fg = c.magenta }

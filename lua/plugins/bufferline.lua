@@ -36,9 +36,10 @@ return {
       icon_custom_colors = true,
       icon_separator_active = "▎",
       icon_separator_inactive = "▎",
-      close_command = function(bufnr)
-        BufferKill("bd", bufnr, false)
-      end,
+  --     close_command = function(bufnr)
+  -- -- { "<leader>c", "<cmd>BufferKill<CR>", desc = "Close Buffer" },
+  --       BufferKill("bd", bufnr, false)
+  --     end,
       icon_close_tab = "",
       icon_close_tab_modified = "●",
       offsets = { { filetype = "NvimTree", text = "File Explorer", padding = 1 } },

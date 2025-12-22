@@ -24,7 +24,7 @@ return {
         lua = { "stylua" },
 
         -- Python
-        -- python = {},
+        python = { },
 
         -- Go
         go = { "gofmt", "goimports" },
