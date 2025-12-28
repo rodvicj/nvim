@@ -4,6 +4,3 @@ require "config.autocmds"
 require "config.commands"
 require "config.lazy"
 require "function.bufferkill"
-
-
--- NOTE: markdown treesitter not working

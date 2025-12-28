@@ -11,7 +11,7 @@ return {
       enabled = true,
       char = "▏",
     },
-    input = { enabled = true },
+    input = { enabled = false },
     notifier = {
       enabled = true,
       timeout = 3000,
