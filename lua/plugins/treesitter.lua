@@ -1,9 +1,15 @@
 return {
   "nvim-treesitter/nvim-treesitter",
+  -- "neovim-treesitter/nvim-treesitter", --not sure if trusted repo yet
+  commit = "90cd658",
+  main = "nvim-treesitter",
+  -- dependencies = { 'neovim-treesitter/treesitter-parser-registry' },
   event = { "BufReadPost", "BufNewFile" },
+  lazy = false,
   build = ":TSUpdate",
   config = function()
-    require("nvim-treesitter.configs").setup {
+    require("nvim-treesitter.config").setup {
+      -- require('nvim-treesitter').setup {
       ensure_installed = {
         "html",
         "htmldjango",
@@ -37,5 +43,17 @@ return {
 
       modules = {},
     }
+
+    -- In Neovim 0.12, treesitter highlight is managed natively
+    -- Enable it for all buffers with an available parser
+    vim.api.nvim_create_autocmd("FileType", {
+      callback = function(ev)
+        local ok = pcall(vim.treesitter.start, ev.buf)
+        if not ok then
+          return
+        end
+      end,
+    })
+
   end,
 }

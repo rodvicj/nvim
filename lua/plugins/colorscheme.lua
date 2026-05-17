@@ -40,7 +40,6 @@ return {
         -- print("@tag.delimiter", Util.blend_bg(c.blue, 0.7))
 
         --prevent unnecessary highlight in top winbar when splitting view
-
         hl.WinBar = { link = "none" }
         hl.WinBarNC = { link = "none" }
 
@@ -56,6 +55,7 @@ return {
 
         -- hl.MarkSignHL = {link = "none"}
         hl.MarkSignNumHL = { link = "none" }
+
         -- hl.MarkVirtTextHL = {link = "none"}
 
         -- MarkSignHL

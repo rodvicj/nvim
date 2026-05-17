@@ -30,17 +30,17 @@ return  {
     button("c", icons.ui.Gear .. " Config", ":e ~/.config/nvim/init.lua <CR>"),
     button("q", icons.ui.SignOut .. " Quit", ":qa<CR>"),
   }
+
   local function footer()
     return "chrisatmachine.com"
   end
 
   dashboard.section.footer.val = footer()
-
   dashboard.section.header.opts.hl = "Keyword"
   dashboard.section.buttons.opts.hl = "Include"
   dashboard.section.footer.opts.hl = "Type"
-
   dashboard.opts.opts.noautocmd = true
+
   require("alpha").setup(dashboard.opts)
 
   vim.api.nvim_create_autocmd("User", {

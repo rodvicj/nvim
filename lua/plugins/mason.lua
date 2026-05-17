@@ -30,6 +30,8 @@ function M.config()
       "rust_analyzer",
       "ruff",
     },
+    -- Automatically calls vim.lsp.enable() on installed servers (Neovim 0.11+)
+    automatic_enable = true,
   }
 end
 
