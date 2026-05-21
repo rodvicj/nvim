@@ -6,7 +6,6 @@ return {
 
     conform.setup {
       formatters_by_ft = {
-        -- Web development
         javascript = { "prettierd" },
         typescript = { "prettierd" },
         javascriptreact = { "prettierd" },
@@ -19,25 +18,13 @@ return {
         yaml = { "prettierd" },
         markdown = { "prettierd" },
         graphql = { "prettierd" },
-
-        -- Lua
         lua = { "stylua" },
-
-        -- Python
         python = { },
-
-        -- Go
         go = { "gofmt", "goimports" },
-
-        -- Rust
         rust = { "rustfmt" },
-
-        -- Shell
         sh = { "shfmt" },
         bash = { "shfmt" },
         zsh = { "shfmt" },
-
-        -- TOML
         toml = { "taplo" },
 
         -- Use the "*" filetype to run formatters on all filetypes
