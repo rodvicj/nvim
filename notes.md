@@ -1,4 +1,5 @@
 d shift 4 -- deletes current cursor up to last char in the same line
+d + e -- deletes current to end
 dt(char) delete to the (char)
 "0p paste latest yank and wont paste from delete
 5e875ae8d07dd204ce5b1d97a8acf70e3835b40b --jsx treesitter highlight still not messed up
