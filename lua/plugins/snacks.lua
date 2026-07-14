@@ -30,6 +30,12 @@ return {
         -- wo = { wrap = true } -- Wrap notifications
       },
     },
+    -- terminal = {
+    --   win = {
+    --     style = "float", -- Forces terminal to float instead of splitting
+    --     border = "rounded",
+    --   },
+    -- },
   },
   keys = {
     -- Top Pickers & Explorer
@@ -469,20 +475,22 @@ return {
       end,
       desc = "Dismiss All Notifications",
     },
-    {
-      "<c-/>",
-      function()
-        Snacks.terminal()
-      end,
-      desc = "Toggle Terminal",
-    },
-    {
-      "<c-_>",
-      function()
-        Snacks.terminal()
-      end,
-      desc = "which_key_ignore",
-    },
+    -- {
+    --   "<m-;>",
+    --   function()
+    --     Snacks.terminal()
+    --   end,
+    --   desc = "Toggle Terminal",
+    --   mode = { "n", "t" },
+    -- },
+    -- {
+    --   "<c-\\>",
+    --   function()
+    --     Snacks.terminal()
+    --   end,
+    --   desc = "which_key_ignore",
+    --   mode = { "n", "t" },
+    -- },
     {
       "]]",
       function()
@@ -547,5 +555,29 @@ return {
         Snacks.toggle.dim():map "<leader>uD"
       end,
     })
+
+    -- 1. Isolated Floating Terminal (Alt + i)
+    vim.keymap.set({ "n", "t" }, "<c-\\>", function()
+      Snacks.terminal.toggle(nil, {
+        env = { TERMINAL_TYPE = "floating" }, -- Custom ID differentiator
+        win = {
+          style = "float",
+          border = "rounded",
+          width = 0.85,
+          height = 0.85,
+        },
+      })
+    end, { desc = "Toggle Floating Terminal" })
+
+    -- 2. Isolated Bottom Split Terminal (Alt + o)
+    vim.keymap.set({ "n", "t" }, "<M-;>", function()
+      Snacks.terminal.toggle(nil, {
+        env = { TERMINAL_TYPE = "bottom" }, -- Custom ID differentiator
+        win = {
+          position = "bottom",
+          height = 0.43,
+        },
+      })
+    end, { desc = "Toggle Bottom Terminal" })
   end,
 }

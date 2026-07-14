@@ -54,6 +54,7 @@ return {
         -- hl.MarkVirtTextHL = { fg = c.comment, bold = false }
 
         -- hl.MarkSignHL = {link = "none"}
+
         hl.MarkSignNumHL = { link = "none" }
 
         -- hl.MarkVirtTextHL = {link = "none"}
