@@ -1,40 +1,8 @@
--- return {
---   "petertriho/nvim-scrollbar",
---   -- Highly recommended dependencies to populate the scrollbar with useful marks
---   dependencies = {
---     "lewis6991/gitsigns.nvim",
---     "kevinhwang91/nvim-hlslens",
---   },
---   -- Ensures it only loads when you start editing/reading a buffer
---   event = { "BufReadPost", "BufNewFile" },
---   opts = {
---     -- Enable standard integrations out of the box
---     handlers = {
---       gitsigns = true,
---       search = true,
---     },
---     -- Custom colors or handle configuration (optional)
---     handle = {
---       text = " ",
---       blend = 30, -- 0 for fully opaque, 100 for transparent
---       color = nil, -- Uses theme default, or specify a hex color like "#61afef"
---     },
---     marks = {
---       -- Customize search, diagnostics, and git diff color/positions if desired
---       Search = { color = "#ff9e64" },
---       Error  = { color = "#db4b4b" },
---       Warn   = { color = "#e0af68" },
---       Info   = { color = "#0db9d7" },
---       Hint   = { color = "#1abc9c" },
---     },
---   },
--- }
-
-
 return {
   "petertriho/nvim-scrollbar",
   event = "VeryLazy",
   dependencies = {
+    "lewis6991/gitsigns.nvim",
     "kevinhwang91/nvim-hlslens",
   },
   opts = {
@@ -185,3 +153,36 @@ return {
     require("scrollbar").setup(opts)
   end,
 }
+
+-- return {
+--   "petertriho/nvim-scrollbar",
+--   -- Highly recommended dependencies to populate the scrollbar with useful marks
+--   dependencies = {
+--     "lewis6991/gitsigns.nvim",
+--     "kevinhwang91/nvim-hlslens",
+--   },
+--   -- Ensures it only loads when you start editing/reading a buffer
+--   event = { "BufReadPost", "BufNewFile" },
+--   opts = {
+--     -- Enable standard integrations out of the box
+--     handlers = {
+--       gitsigns = true,
+--       search = true,
+--     },
+--     -- Custom colors or handle configuration (optional)
+--     handle = {
+--       text = " ",
+--       blend = 30, -- 0 for fully opaque, 100 for transparent
+--       color = nil, -- Uses theme default, or specify a hex color like "#61afef"
+--     },
+--     marks = {
+--       -- Customize search, diagnostics, and git diff color/positions if desired
+--       Search = { color = "#ff9e64" },
+--       Error  = { color = "#db4b4b" },
+--       Warn   = { color = "#e0af68" },
+--       Info   = { color = "#0db9d7" },
+--       Hint   = { color = "#1abc9c" },
+--     },
+--   },
+-- }
+
