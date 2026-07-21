@@ -29,8 +29,7 @@ return {
     },
     options = {
       mode = "buffers",
-      sort_by = "directory",
-      move_to_end = false,
+      sort_by = "id",
       always_show_bufferline = true,
       animation = false,
       auto_hide = false,
