@@ -146,3 +146,14 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 --   -- group = general,
 --   group = "General",
 -- })
+
+-- -- Automatically activate .venv in Neovim's root directory
+-- vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
+--   callback = function()
+--     local venv_path = vim.fn.getcwd() .. "/.venv"
+--     if vim.fn.isdirectory(venv_path) == 1 then
+--       vim.env.VIRTUAL_ENV = venv_path
+--       vim.env.PATH = venv_path .. "/bin:" .. vim.env.PATH
+--     end
+--   end,
+-- })

@@ -30,12 +30,6 @@ return {
         -- wo = { wrap = true } -- Wrap notifications
       },
     },
-    -- terminal = {
-    --   win = {
-    --     style = "float", -- Forces terminal to float instead of splitting
-    --     border = "rounded",
-    --   },
-    -- },
   },
   keys = {
     -- Top Pickers & Explorer
@@ -475,22 +469,6 @@ return {
       end,
       desc = "Dismiss All Notifications",
     },
-    -- {
-    --   "<m-;>",
-    --   function()
-    --     Snacks.terminal()
-    --   end,
-    --   desc = "Toggle Terminal",
-    --   mode = { "n", "t" },
-    -- },
-    -- {
-    --   "<c-\\>",
-    --   function()
-    --     Snacks.terminal()
-    --   end,
-    --   desc = "which_key_ignore",
-    --   mode = { "n", "t" },
-    -- },
     {
       "]]",
       function()
