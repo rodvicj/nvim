@@ -19,6 +19,7 @@ return {
         "javascript",
         "json",
         "markdown",
+        -- "ini",
       },
       highlight = {
         enable = true,
@@ -56,5 +57,10 @@ return {
       end,
     })
 
+    -- vim.filetype.add {
+    --   extension = {
+    --     conf = "ini",
+    --   },
+    -- }
   end,
 }

@@ -1,8 +1,9 @@
 local M = {
-  -- "NvChad/nvim-colorizer.lua",
   -- "ChristianChiarulli/nvim-colorizer.lua",
   -- "rodvicj/nvim-colorizer.lua",
-  "catgoose/nvim-colorizer.lua",
+  -- "catgoose/nvim-colorizer.lua",
+  -- commit = "ef211089af881bea206c7aa3f2693a81feee7e90",
+  "rodvicj/nvim-colorizer.lua",
   event = { "BufReadPost", "BufNewFile" },
 }
 
