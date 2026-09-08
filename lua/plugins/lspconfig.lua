@@ -8,8 +8,9 @@ vim.lsp.enable {
   "lua_ls",
   "cssls",
   "html",
-  "pyright",
+  -- "pyright",
   -- "basedpyright",
+  "ty",
   "bashls",
   "jsonls",
   "yamlls",
@@ -204,8 +205,7 @@ return M
 --     },
 --     { "<leader>li", "<cmd>LspInfo<cr>", desc = "Info" },
 --     { "<leader>lj", "<cmd>lua vim.diagnostic.goto_next()<cr>", desc = "Next Diagnostic" },
---     { "<leader>lh", "<cmd>lua require('user.lspconfig').toggle_inlay_hints()<cr>", desc = "Hints" },
---     { "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev()<cr>", desc = "Prev Diagnostic" },
+--     { "<leader>lh", "<cmd>lua require('user.lspconfig').toggle_inlay_hints()<cr>", desc = "Hints" }, { "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev()<cr>", desc = "Prev Diagnostic" },
 --     { "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "CodeLens Action" },
 --     { "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<cr>", desc = "Quickfix" },
 --     { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
@@ -308,3 +308,4 @@ return M
 -- end
 
 -- return M
+

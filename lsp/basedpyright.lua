@@ -27,3 +27,19 @@
 --       },
 --     },
 --   }
+
+return {
+  settings = {
+    basedpyright = {
+      analysis = {
+        inlayHints = {
+          callArgumentNames = true,
+          variableTypes = true,
+          functionReturnTypes = true,
+        },
+      },
+    },
+  },
+}
+
+
