@@ -3,6 +3,7 @@ vim.g.live_server = {
   -- browser = false,
 }
 
+
 -- return  {
 --   "barrett-ruth/live-server.nvim",
 --   event = "VeryLazy",
