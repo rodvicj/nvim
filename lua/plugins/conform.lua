@@ -19,7 +19,9 @@ return {
         markdown = { "prettierd" },
         graphql = { "prettierd" },
         lua = { "stylua" },
-        python = { },
+      -- "ruff_format",             -- Runs the main Ruff code formatter
+      -- "ruff_organize_imports",   -- Organizes and sorts imports
+        python = { "ruff_organize_imports" },
         go = { "gofmt", "goimports" },
         rust = { "rustfmt" },
         sh = { "shfmt" },
