@@ -534,18 +534,37 @@ return {
       end,
     })
 
-    -- 1. Isolated Floating Terminal (Alt + i)
-    vim.keymap.set({ "n", "t" }, "<c-\\>", function()
-      Snacks.terminal.toggle(nil, {
-        env = { TERMINAL_TYPE = "floating" }, -- Custom ID differentiator
-        win = {
-          style = "float",
-          border = "rounded",
-          width = 0.85,
-          height = 0.85,
-        },
-      })
-    end, { desc = "Toggle Floating Terminal" })
+    local float_term = nil
+
+    local function toggle_floating_terminal()
+      if float_term and float_term:buf_valid() then
+        if not float_term:valid() then
+          float_term:show()
+        elseif not float_term:on_current_tab() then
+          float_term:hide()
+          float_term:show()
+        elseif vim.api.nvim_get_current_buf() == float_term.buf then
+          float_term:hide()
+        else
+          float_term:focus()
+        end
+      else
+        float_term = Snacks.terminal(nil, {
+          env = { TERMINAL_TYPE = "floating" },
+          win = {
+            style = "float",
+            border = "rounded",
+            width = 0.85,
+            height = 0.85,
+          },
+        })
+      end
+    end
+
+    -- 1. Isolated Floating Terminal (Persistent across project/directory changes)
+    vim.keymap.set({ "n", "t" }, "<c-\\>", toggle_floating_terminal, { desc = "Toggle Floating Terminal" })
+    vim.keymap.set({ "n", "t" }, "<C-/>", toggle_floating_terminal, { desc = "Toggle Floating Terminal" })
+    vim.keymap.set({ "n", "t" }, "<c-_>", toggle_floating_terminal, { desc = "which_key_ignore" })
 
     -- 2. Isolated Bottom Split Terminal (Alt + o)
     vim.keymap.set({ "n", "t" }, "<M-;>", function()
