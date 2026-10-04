@@ -1,9 +1,17 @@
+-- return {
+--   "windwp/nvim-autopairs",
+--   config = function()
+--     require("nvim-autopairs").setup {
+--       check_ts = true,
+--       disable_filetype = { "TelescopePrompt", "spectre_panel" },
+--     }
+--   end,
+-- }
+
 return {
-  "windwp/nvim-autopairs",
+  "nvim-mini/mini.pairs",
+  version = false,
   config = function()
-    require("nvim-autopairs").setup {
-      check_ts = true,
-      disable_filetype = { "TelescopePrompt", "spectre_panel" },
-    }
+    require("mini.pairs").setup()
   end,
 }
