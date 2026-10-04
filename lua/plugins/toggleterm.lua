@@ -73,8 +73,8 @@ return {
     vim.cmd "autocmd! TermOpen term://* lua set_terminal_keymaps()"
 
     local Terminal = require("toggleterm.terminal").Terminal
-    -- local float_term_key = "<m-\\>"
-    local float_term_key = "<c-\\>"
+    -- local float_term_key = "<c-\\>"
+    local float_term_key = [[<c-\>]]
     local float_term = Terminal:new {
       direction = "float",
       -- float_opts = {
@@ -123,7 +123,7 @@ return {
     vim.api.nvim_set_keymap("i", float_term_key, "<cmd>lua _FLOAT_TERM()<CR>", { noremap = true, silent = true })
 
     -- local horizontal_term_key = "<m-;>"
-    local horizontal_term_key = "<m-;>"
+    local horizontal_term_key = [[<m-;>]]
     local horizontal_term = Terminal:new {
       direction = "horizontal",
       on_open = function(term)

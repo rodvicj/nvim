@@ -503,6 +503,22 @@ return {
         }
       end,
     },
+    {
+      [[<A-\>]],
+      function()
+        Snacks.terminal.toggle(nil, {
+          win = {
+            wo = {
+              winbar = "",
+            },
+            position = "right",
+            width = 0.4,
+          },
+        })
+      end,
+      mode = { "n", "t" },
+      desc = "Toggle Vertical Terminal",
+    },
   },
   init = function()
     vim.api.nvim_create_autocmd("User", {
@@ -558,11 +574,6 @@ return {
     --         height = 0.85,
     --       },
     --       keys = {
-    --         -- Set any key you DO NOT want snacks.nvim to remap to false
-    --         -- ["<C-j>"] = false,
-    --         -- ["<C-h>"] = false,
-    --         -- gf = false,
-    --         -- term_normal = false, -- Disables the default <Esc> or <C-\><C-n> mapping to normal mode
     --       },
     --     })
     --   end
@@ -570,25 +581,14 @@ return {
 
     -- -- 1. Isolated Floating Terminal (Persistent across project/directory changes)
     -- vim.keymap.set({ "n", "t" }, "<c-\\>", toggle_floating_terminal, { desc = "Toggle Floating Terminal" })
-    -- -- vim.keymap.set({ "n", "t" }, "<C-/>", toggle_floating_terminal, { desc = "Toggle Floating Terminal" })
-    -- -- vim.keymap.set({ "n", "t" }, "<c-_>", toggle_floating_terminal, { desc = "which_key_ignore" })
 
     -- -- 2. Isolated Bottom Split Terminal (Alt + o)
-    -- vim.keymap.set({ "n", "t" }, "<M-;>", function()
+    -- vim.keymap.set({ "n", "t" }, "<M-\\>", function()
     --   Snacks.terminal.toggle(nil, {
     --     env = { TERMINAL_TYPE = "bottom" }, -- Custom ID differentiator
     --     win = {
     --       wo = {
     --         winbar = "",
-    --       },
-    --       keys = {
-    --         -- Set any key you DO NOT want snacks.nvim to remap to false
-    --         -- ["<C-j>"] = false,
-    --         -- ["<C-k>"] = false,
-    --         -- ["<C-l>"] = false,
-    --         -- ["<C-h>"] = false,
-    --         -- gf = false,
-    --         -- term_normal = false, -- Disables the default <Esc> or <C-\><C-n> mapping to normal mode
     --       },
     --       position = "bottom",
     --       height = 0.43,

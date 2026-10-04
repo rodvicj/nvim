@@ -6,6 +6,7 @@ return {
   config = function()
     local Util = require "tokyonight.util"
 
+
     require("tokyonight").setup {
       on_highlights = function(hl, c)
         hl.rainbowcol1 = { fg = "Gold" }
@@ -55,6 +56,11 @@ return {
 
         -- hl.MarkSignHL = {link = "none"}
 
+        -- vim.api.nvim_set_hl(0, "SnacksNormal", { link = "Normal" })
+        -- vim.api.nvim_set_hl(0, "SnacksNormalNC", { link = "NormalNC" })
+        -- hl.SnacksNormal = { link = "Normal" }
+        -- hl.SnacksNormalNC = { link = "NormalNC" }
+
         hl.MarkSignNumHL = { link = "none" }
 
         -- hl.MarkVirtTextHL = {link = "none"}
@@ -78,6 +84,7 @@ return {
 
         -- make windows picker choice brighter when picking for new file in virtical split window
         hl.StatusLineNC = { fg = c.orange, nocombine = true }
+
       end,
     }
 
